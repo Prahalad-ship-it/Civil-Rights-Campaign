@@ -87,3 +87,83 @@ body {
     color: #2c3e50;
     line-height: 1.8;
 }
+
+/* Responsive Design for Tablets and Smaller Screens */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .header-text h1 {
+        font-size: 2rem;
+    }
+
+    .page-info {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.85rem;
+        padding: 10px 15px;
+    }
+
+    .section {
+        padding: 40px 15px;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .section p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive Design for Mobile Phones */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 10px;
+    }
+
+    .header-container {
+        gap: 10px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-info {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+
+    .section {
+        padding: 25px 15px;
+    }
+
+    .section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    .section p {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}
