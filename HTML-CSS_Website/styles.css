@@ -150,6 +150,40 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Advocacy Section Images Container */
+.advocacy-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Smaller Images for Advocacy Section */
+.advocacy-image {
+    max-width: 240px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tackling the Problem Section Images Container */
+.tackling-images {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Images for Tackling Section */
+.tackling-image {
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* Section Paragraphs */
 .section p {
     font-size: 1rem;
@@ -169,6 +203,53 @@ body {
     font-weight: 600;
     margin-top: 30px;
     margin-bottom: 20px;
+}
+
+/* Poem Card Styling */
+.poem-card {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.poem-title {
+    color: #A01C1C;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.poem-meta {
+    color: #999;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.poem-text {
+    font-family: Georgia, 'Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* Background Story Heading */
+.background-story-heading {
+    color: #1B2A4A;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #A01C1C;
 }
 
 /* Section Lists */
@@ -245,6 +326,14 @@ body {
         margin-bottom: 20px;
     }
 
+    .advocacy-images {
+        gap: 20px;
+    }
+
+    .advocacy-image {
+        max-width: 200px;
+    }
+
     .container {
         padding: 0 20px;
     }
@@ -253,6 +342,19 @@ body {
         padding: 10px 20px;
         gap: 20px;
         font-size: 0.85rem;
+    }
+
+    .poem-card {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+
+    .poem-title {
+        font-size: 1.5rem;
+    }
+
+    .poem-text {
+        font-size: 0.95rem;
     }
 }
 
@@ -322,9 +424,40 @@ body {
         padding: 0 15px;
     }
 
+    .advocacy-image {
+        max-width: 150px;
+    }
+
+    .advocacy-images {
+        gap: 15px;
+    }
+
     .page-info {
         padding: 8px 15px;
         font-size: 0.75rem;
         gap: 10px;
+    }
+
+    .poem-card {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .poem-title {
+        font-size: 1.3rem;
+    }
+
+    .poem-meta {
+        font-size: 0.9rem;
+    }
+
+    .poem-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .background-story-heading {
+        font-size: 1.2rem;
+        margin-top: 30px;
     }
 }
