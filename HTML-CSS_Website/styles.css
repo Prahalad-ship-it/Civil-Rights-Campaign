@@ -1,0 +1,463 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Page Info Banner */
+.page-info {
+    background-color: #e8f0f6;
+    padding: 12px 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #1B2A4A;
+    border-bottom: 2px solid #A01C1C;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.page-info span {
+    font-weight: 500;
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;
+    padding: 50px 30px;
+    border-bottom: 4px solid #A01C1C;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header h1 {
+    color: #A01C1C;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+/* Sticky Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #1B2A4A;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 0;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.nav-link:hover {
+    border-bottom-color: #A01C1C;
+}
+
+/* Sections */
+.section {
+    padding: 80px 30px;
+}
+
+.section-white {
+    background-color: #ffffff;
+}
+
+.section-gray {
+    background-color: #f5f5f5;
+}
+
+.section h2 {
+    color: #1B2A4A;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #A01C1C;
+    font-weight: bold;
+}
+
+/* Image Placeholder */
+.image-placeholder {
+    background-color: #e0e0e0;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    height: 350px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Section Images */
+.section-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto 40px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Advocacy Section Images Container */
+.advocacy-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Smaller Images for Advocacy Section */
+.advocacy-image {
+    max-width: 240px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tackling the Problem Section Images Container */
+.tackling-images {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Images for Tackling Section */
+.tackling-image {
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Paragraphs */
+.section p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Section Subheadings */
+.section h3 {
+    color: #A01C1C;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Poem Card Styling */
+.poem-card {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.poem-title {
+    color: #A01C1C;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.poem-meta {
+    color: #999;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.poem-text {
+    font-family: Georgia, 'Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* Background Story Heading */
+.background-story-heading {
+    color: #1B2A4A;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #A01C1C;
+}
+
+/* Section Lists */
+.section-list {
+    list-style-position: inside;
+    margin: 0 0 30px 0;
+    padding: 0;
+}
+
+.section-list li {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.7;
+    padding-left: 25px;
+    text-indent: -25px;
+}
+
+.section-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   TABLET RESPONSIVE DESIGN (768px and below)
+   ============================================ */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header,
+    .navbar,
+    .section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 12px 0;
+    }
+
+    .section {
+        padding: 50px 20px;
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+    }
+
+    .image-placeholder {
+        height: 250px;
+        margin-bottom: 30px;
+    }
+
+    .section p {
+        margin-bottom: 20px;
+    }
+
+    .advocacy-images {
+        gap: 20px;
+    }
+
+    .advocacy-image {
+        max-width: 200px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .page-info {
+        padding: 10px 20px;
+        gap: 20px;
+        font-size: 0.85rem;
+    }
+
+    .poem-card {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+
+    .poem-title {
+        font-size: 1.5rem;
+    }
+
+    .poem-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE DESIGN (480px and below)
+   ============================================ */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .header {
+        padding: 30px 15px;
+    }
+
+    .header-container {
+        gap: 15px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 15px;
+    }
+
+    .nav-link {
+        padding: 12px 0;
+        font-size: 0.9rem;
+        border-bottom-width: 2px !important;
+    }
+
+    .section {
+        padding: 40px 15px;
+    }
+
+    .section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+    }
+
+    .image-placeholder {
+        height: 200px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+    }
+
+    .section p {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .advocacy-image {
+        max-width: 150px;
+    }
+
+    .advocacy-images {
+        gap: 15px;
+    }
+
+    .page-info {
+        padding: 8px 15px;
+        font-size: 0.75rem;
+        gap: 10px;
+    }
+
+    .poem-card {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .poem-title {
+        font-size: 1.3rem;
+    }
+
+    .poem-meta {
+        font-size: 0.9rem;
+    }
+
+    .poem-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .background-story-heading {
+        font-size: 1.2rem;
+        margin-top: 30px;
+    }
+}
