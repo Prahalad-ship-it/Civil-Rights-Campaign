@@ -18,6 +18,35 @@
             margin-bottom: 15px;
             word-wrap: break-word;
         }
+
+        /* Learn More Section */
+        .learn-more-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .learn-more-section p {
+            font-size: 1.1em;
+            margin-bottom: 16px;
+            font-style: italic;
+            color: #444;
+        }
+        .learn-more-logo-link {
+            display: inline-block;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .learn-more-logo-link:hover {
+            opacity: 0.8;
+            transform: scale(1.03);
+        }
+        .learn-more-logo-link img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            background: #fff;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +69,7 @@
             <a href="#advocacy" class="nav-link">Advocacy Efforts</a>
             <a href="#tackling" class="nav-link">Tackling the Problem</a>
             <a href="#voice" class="nav-link">Our Voice</a>
+            <a href="#learn-more" class="nav-link">Learn More</a>
             <a href="#sources" class="nav-link">Works Cited</a>
         </div>
     </nav>
@@ -141,18 +171,29 @@ Because nobody can divide others if we stand together</pre>
         </div>
     </section>
 
-    <section id="sources" class="section section-white">
+    <!-- Learn More Section — placed before Works Cited -->
+    <section id="learn-more" class="section section-white">
+        <div class="container learn-more-section">
+            <h2>Learn More</h2>
+            <p>Learn more about the Indian Law Resource Center by clicking on the photo below!</p>
+            <a href="https://indianlaw.org" target="_blank" rel="noopener noreferrer" class="learn-more-logo-link">
+                <img src="images/Indian%20Law%20Resource%20Center%20logo.png" alt="Indian Law Resource Center Logo — click to visit indianlaw.org">
+            </a>
+        </div>
+    </section>
+
+    <section id="sources" class="section section-gray">
         <div class="container">
             <h2 style="text-align: center;">Works Cited</h2>
             <div class="citation-container">
                 <p class="citation-entry">
-                    “Indian Law Resource Center.” <em>Indianlaw.org</em>, indianlaw.org. Accessed 17 Apr. 2026.
+                    "Indian Law Resource Center." <em>Indianlaw.org</em>, indianlaw.org. Accessed 17 Apr. 2026.
                 </p>
                 <p class="citation-entry">
-                    “Indian Law Resource Center | Gruber Foundation.” <em>Yale.edu</em>, 2025, gruber.yale.edu/recipient/indian-law-resource-center. Accessed 17 Apr. 2026.
+                    "Indian Law Resource Center | Gruber Foundation." <em>Yale.edu</em>, 2025, gruber.yale.edu/recipient/indian-law-resource-center. Accessed 17 Apr. 2026.
                 </p>
                 <p class="citation-entry">
-                    “Robert T. Coulter.” <em>Breakingthroughpower.org</em>, spring.breakingthroughpower.org/speaker/robert-t-coulter/. Accessed 17 Apr. 2026.
+                    "Robert T. Coulter." <em>Breakingthroughpower.org</em>, spring.breakingthroughpower.org/speaker/robert-t-coulter/. Accessed 17 Apr. 2026.
                 </p>
             </div>
         </div>
