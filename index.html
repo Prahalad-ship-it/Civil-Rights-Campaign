@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indian Law Resource Center | JusticeBridge Global</title>
+<title>Indian Law Resource Center | Global Code Catalyst</title>
 
 <meta name="description" content="The Indian Law Resource Center provides free legal assistance to Indigenous peoples across the Americas, fighting violence against Native women and protecting Indigenous rights for 45+ years.">
-<meta name="keywords" content="Indian Law Resource Center, Indigenous rights, Native women, tribal law, VAWA, MMIW, Native American advocacy, JusticeBridge Global">
-<meta name="author" content="Srinaga Prahalad Pillutla — JusticeBridge Global">
+<meta name="keywords" content="Indian Law Resource Center, Indigenous rights, Native women, tribal law, VAWA, MMIW, Native American advocacy, Global Code Catalyst">
+<meta name="author" content="Srinaga Prahalad Pillutla — Global Code Catalyst">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://indianlaw.org">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://indianlaw.org">
-<meta property="og:site_name" content="JusticeBridge Global">
-<meta property="og:title" content="Indian Law Resource Center | 45 Years of Indigenous Justice — JusticeBridge Global">
-<meta property="og:description" content="4 in 5 Native women experience violence. 96% of perpetrators go uncharged. One center has fought to change this since 1978. A JusticeBridge Global editorial.">
+<meta property="og:site_name" content="Global Code Catalyst">
+<meta property="og:title" content="Indian Law Resource Center | 45 Years of Indigenous Justice — Global Code Catalyst">
+<meta property="og:description" content="4 in 5 Native women experience violence. 96% of perpetrators go uncharged. One center has fought to change this since 1978. Global Code Catalyst.">
 <meta property="og:image" content="https://indianlaw.org/images/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@JusticeBridgeGbl">
@@ -24,8 +24,17 @@
 <meta name="twitter:description" content="4 in 5 Native women experience violence. 96% of perpetrators go uncharged. #IndigenousRights #MMIW #JusticeBridgeGlobal">
 <meta name="twitter:image" content="https://indianlaw.org/images/og-preview.jpg">
 
+<!-- Performance: Preload key assets -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" as="style">
+
+<!-- Modern theme color for mobile browsers -->
+<meta name="theme-color" content="#1A2A40">
+
+<!-- Additional accessibility meta -->
+<meta name="color-scheme" content="light dark">
+
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"NGO","name":"Indian Law Resource Center","url":"https://indianlaw.org","description":"Nonprofit law and advocacy organization providing free legal assistance to Indigenous peoples across the Americas.","foundingDate":"1978","founder":{"@type":"Person","name":"Robert T. Coulter"},"publisher":{"@type":"Organization","name":"JusticeBridge Global"}}
+{"@context":"https://schema.org","@type":"NGO","name":"Indian Law Resource Center","url":"https://indianlaw.org","description":"Nonprofit law and advocacy organization providing free legal assistance to Indigenous peoples across the Americas.","foundingDate":"1978","founder":{"@type":"Person","name":"Robert T. Coulter"},"publisher":{"@type":"Organization","name":"Global Code Catalyst"}}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -426,7 +435,300 @@ span[data-lang].lang-visible,
   .collage-3 .cframe:nth-child(1),
   .collage-3 .cframe:nth-child(2),
   .collage-3 .cframe:nth-child(3){transform:rotate(0deg) translate(0,0);margin:0;box-shadow:var(--bs);}
+  .timeline{flex-direction:column;padding:20px 0}
+  .timeline-item{flex-direction:row;margin-bottom:20px}
+  .timeline-content{margin-left:0;padding-left:40px}
+  .issues-grid,.action-cards{grid-template-columns:1fr;gap:16px}
+  .assistant-wrapper{flex-direction:column}
 }
+
+/* ══ LOADING ANIMATION ══ */
+.loading-spinner {
+  display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ══ TIMELINE SECTION ══ */
+.timeline-section { background: linear-gradient(135deg, #F5E8C8 0%, #FBF5E8 100%); }
+.timeline {
+  display: flex; flex-direction: column; position: relative; padding: 40px 0;
+  max-width: 800px; margin: 0 auto;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(180deg, var(--red), var(--gold));
+  transform: translateX(-50%);
+}
+.timeline-item {
+  display: flex; margin-bottom: 40px; opacity: 0; transform: translateY(20px);
+  animation: slideInTimeline .6s ease forwards;
+  position: relative;
+}
+.timeline-item:nth-child(odd) { justify-content: flex-start; }
+.timeline-item:nth-child(even) { justify-content: flex-end; }
+.timeline-item:nth-child(1) { animation-delay: 0s; }
+.timeline-item:nth-child(2) { animation-delay: 0.1s; }
+.timeline-item:nth-child(3) { animation-delay: 0.2s; }
+.timeline-item:nth-child(4) { animation-delay: 0.3s; }
+.timeline-item:nth-child(5) { animation-delay: 0.4s; }
+@keyframes slideInTimeline {
+  to { opacity: 1; transform: translateY(0); }
+}
+.timeline-dot {
+  position: absolute; left: 50%; width: 20px; height: 20px;
+  background: var(--gold); border: 4px solid var(--cream);
+  border-radius: 50%; transform: translateX(-50%); top: 0;
+  box-shadow: 0 0 0 3px var(--red); z-index: 2;
+}
+.timeline-content {
+  width: calc(50% - 40px); background: #fff; padding: 24px; border-radius: var(--ro);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08); transition: transform .3s ease, box-shadow .3s ease;
+}
+.timeline-item:nth-child(odd) .timeline-content { margin-right: 40px; text-align: right; }
+.timeline-item:nth-child(even) .timeline-content { margin-left: 40px; text-align: left; }
+.timeline-content:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,.15); }
+.timeline-year {
+  display: inline-block; background: var(--gold); color: var(--earth);
+  padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: .85rem; margin-bottom: 8px;
+}
+.timeline-content h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.timeline-content p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+
+/* ══ ISSUES GRID ══ */
+.issues-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;
+}
+.issue-card {
+  background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  padding: 32px 24px; border-radius: 16px; text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.06); transition: all .3s ease;
+  position: relative; overflow: hidden;
+}
+.issue-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,146,43,.03), rgba(193,39,45,.02));
+  pointer-events: none;
+}
+.issue-card:hover {
+  transform: translateY(-8px); box-shadow: 0 16px 48px rgba(0,0,0,.12);
+  background: rgba(255, 255, 255, 0.9);
+}
+.issue-icon {
+  font-size: 3rem; margin-bottom: 16px; display: block;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.issue-card h3 { color: var(--earth); margin-bottom: 12px; font-size: 1.3rem; }
+.issue-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+.issue-btn {
+  display: inline-block; padding: 10px 20px; background: var(--sienna);
+  color: #fff; border-radius: 8px; text-decoration: none;
+  transition: all .3s ease; font-weight: 600; font-size: 0.9rem;
+  border: 2px solid var(--sienna);
+}
+.issue-btn:hover {
+  background: transparent; color: var(--sienna); transform: translateX(4px);
+}
+
+/* ══ TAKE ACTION SECTION ══ */
+.take-action-section { background: linear-gradient(135deg, #E8D8B0 0%, #F5E8C8 100%); }
+.action-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin: 40px 0;
+}
+.action-item {
+  background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  padding: 36px 28px; border-radius: 20px; text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.08); transition: all .35s cubic-bezier(.34,.85,.55,1);
+  position: relative; overflow: hidden;
+}
+.action-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(212,146,43,.05), transparent);
+  pointer-events: none;
+}
+.action-item:hover {
+  transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 48px rgba(0,0,0,.15);
+  background: rgba(255, 255, 255, 0.85);
+}
+.action-icon {
+  font-size: 2.8rem; margin-bottom: 16px; display: block;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.action-item h3 { color: var(--earth); margin-bottom: 12px; font-size: 1.25rem; }
+.action-item p { color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+.action-btn {
+  display: inline-block; padding: 12px 28px; background: rgba(212,146,43,.15);
+  color: var(--sienna); border: 2px solid var(--sienna); border-radius: 12px;
+  text-decoration: none; font-weight: 600; transition: all .3s ease;
+  cursor: pointer; font-family: var(--fb);
+}
+.action-btn:hover {
+  background: var(--sienna); color: #fff; transform: translateX(4px);
+  box-shadow: 0 6px 16px rgba(122,59,30,.2);
+}
+.action-btn-primary {
+  background: var(--sienna); color: #fff; border-color: var(--sienna);
+  font-weight: 700; box-shadow: 0 6px 16px rgba(122,59,30,.2);
+}
+.action-btn-primary:hover {
+  background: var(--earth); border-color: var(--earth);
+  transform: scale(1.05); box-shadow: 0 8px 24px rgba(28,15,8,.3);
+}
+.action-highlight {
+  margin: 40px auto 0; max-width: 700px; padding: 28px;
+  background: rgba(193,39,45,.08); border-left: 5px solid var(--red);
+  border-radius: 12px; color: var(--earth); font-size: 1.05rem;
+  line-height: 1.8; font-style: italic;
+}
+
+/* ══ ASSISTANT SECTION ══ */
+.assistant-section { background: linear-gradient(135deg, #0D0805 0%, #1A0D06 100%); position: relative; overflow: hidden; }
+.assistant-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23B8691E' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.assistant-section h2 { color: var(--gold-lt); }
+.assistant-wrapper {
+  display: flex; gap: 32px; margin: 40px 0; align-items: flex-start;
+  max-width: 1000px; margin-left: auto; margin-right: auto;
+}
+.assistant-box {
+  flex: 1; background: rgba(255,255,255,.05); border: 1.5px solid rgba(212,146,43,.2);
+  border-radius: 20px; padding: 28px; backdrop-filter: blur(12px); position: relative; z-index: 1;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.chat-messages {
+  height: 300px; overflow-y: auto; margin-bottom: 20px;
+  padding: 16px 0; display: flex; flex-direction: column; gap: 12px;
+}
+.chat-message {
+  padding: 12px 16px; border-radius: 12px; max-width: 90%;
+  animation: slideInChat .3s ease forwards;
+}
+@keyframes slideInChat {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-message.user {
+  align-self: flex-end; background: var(--sienna);
+  color: #fff; border-radius: 12px 4px 12px 12px;
+}
+.chat-message.assistant {
+  align-self: flex-start; background: rgba(184,105,30,.2);
+  color: rgba(245,232,200,.9); border: 1px solid rgba(212,146,43,.3);
+  border-radius: 4px 12px 12px 12px;
+}
+.chat-input-group {
+  display: flex; gap: 10px;
+}
+.chat-input {
+  flex: 1; padding: 12px 16px; background: rgba(255,255,255,.08);
+  border: 1.5px solid rgba(212,146,43,.2); border-radius: 12px;
+  color: #fff; font-family: var(--fb); font-size: 0.95rem;
+  transition: all .3s ease;
+}
+.chat-input::placeholder { color: rgba(245,232,200,.4); }
+.chat-input:focus {
+  outline: none; background: rgba(255,255,255,.12);
+  border-color: var(--gold); box-shadow: 0 0 16px rgba(212,146,43,.2);
+}
+.chat-send-btn {
+  padding: 12px 20px; background: var(--sienna); color: #fff;
+  border: none; border-radius: 12px; cursor: pointer;
+  font-weight: 600; transition: all .3s ease;
+  box-shadow: 0 6px 16px rgba(122,59,30,.2);
+}
+.chat-send-btn:hover {
+  background: var(--gold); color: var(--earth);
+  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,146,43,.3);
+}
+.chat-send-btn:active { transform: translateY(0); }
+.send-icon { font-size: 1.1rem; }
+.assistant-disclaimer {
+  color: rgba(245,232,200,.5); font-size: 0.85rem; text-align: center; margin: 0;
+}
+.suggested-questions {
+  flex: 1; position: relative; z-index: 1;
+}
+.suggested-questions > p {
+  color: var(--gold-lt); margin-bottom: 16px; font-family: var(--fd);
+}
+.suggestion-btn {
+  display: block; width: 100%; padding: 14px 16px; margin-bottom: 10px;
+  background: rgba(255,255,255,.08); border: 1.5px solid rgba(212,146,43,.2);
+  color: rgba(245,232,200,.8); border-radius: 12px; cursor: pointer;
+  font-family: var(--fb); font-size: 0.95rem; transition: all .3s ease;
+  text-align: left;
+}
+.suggestion-btn:hover {
+  background: rgba(212,146,43,.2); border-color: var(--gold);
+  color: #fff; transform: translateX(8px);
+  box-shadow: 0 8px 24px rgba(212,146,43,.15);
+}
+
+/* ══ ANIMATED COUNTERS ══ */
+.stat-num.animate {
+  animation: countUp 1.5s ease-out forwards;
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ══ SMOOTH PAGE TRANSITIONS ══ */
+.page-transition {
+  animation: fadeInPage .5s ease forwards;
+}
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ══ ENHANCED REVEAL ANIMATIONS ══ */
+.reveal      { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.34,.85,.55,1), transform .8s cubic-bezier(.34,.85,.55,1); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .8s ease, transform .8s ease; }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+/* ══ ADVANCED MOBILE RESPONSIVENESS ══ */
+@media (max-width: 1200px) {
+  .action-cards { grid-template-columns: 1fr 1fr; }
+  .issues-grid { grid-template-columns: 1fr 1fr; }
+  .assistant-wrapper { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .action-cards { grid-template-columns: 1fr; }
+  .issues-grid { grid-template-columns: 1fr; }
+  .timeline::before { left: 20px; }
+  .timeline-item { justify-content: flex-start !important; }
+  .timeline-item:nth-child(even) { justify-content: flex-start !important; }
+  .timeline-dot { left: 20px; }
+  .timeline-content { width: calc(100% - 80px); margin-left: 40px !important; margin-right: 0 !important; text-align: left !important; }
+  .assistant-wrapper { flex-direction: column; }
+  .assistant-box { margin: 0 auto; width: 100%; }
+  .suggested-questions { width: 100%; }
+  .action-highlight { font-size: 1rem; padding: 20px; }
+}
+
+@media (max-width: 480px) {
+  .issue-icon { font-size: 2.4rem; }
+  .action-icon { font-size: 2.4rem; }
+  .timeline-content { width: calc(100% - 60px); margin-left: 20px !important; padding: 18px; }
+  .timeline-dot { left: 5px; width: 16px; height: 16px; border-width: 3px; }
+  .suggestion-btn { font-size: 0.9rem; padding: 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -436,8 +738,7 @@ span[data-lang].lang-visible,
 <!-- PAGE INFO -->
 <div class="page-info">
   <span>Created by <strong>Srinaga Prahalad Pillutla</strong></span>
-  <span>Trimester 3 · US History II · Period 5</span>
-  <span><strong>JusticeBridge Global</strong></span>
+  <span><strong>Indian Law Resource Center</strong></span>
 </div>
 
 <!-- LANGUAGE BAR -->
@@ -456,7 +757,7 @@ span[data-lang].lang-visible,
   <div class="masthead-inner">
     <img src="images/Indian%20Law%20Resource%20Center%20logo.png" alt="Indian Law Resource Center Logo" class="masthead-logo">
     <div class="masthead-title">
-      <p class="masthead-eyebrow">JusticeBridge Global · Vol. III · Issue 2026</p>
+      <p class="masthead-eyebrow">Indian Law Resource Center · 2026</p>
       <h1 class="masthead-h1" data-lang="en">Indian Law Resource Center</h1>
       <h1 class="masthead-h1" data-lang="es">Centro de Recursos de Derecho Indígena</h1>
       <h1 class="masthead-h1" data-lang="nah">Tlahtohcayotl Tlapalehuiliztli Tlahtolli</h1>
@@ -470,7 +771,8 @@ span[data-lang].lang-visible,
       <p class="masthead-tagline" data-lang="fr">Justice · Souveraineté · Protection depuis 45+ ans</p>
     </div>
     <div class="masthead-meta">
-      <strong>JusticeBridge Global</strong>
+      <strong>Indian Law Resource Center
+</strong>
       Est. 1978<br>Helena, Montana<br>#IndigenousRights<br>#MMIW
     </div>
   </div>
@@ -480,13 +782,13 @@ span[data-lang].lang-visible,
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <a href="#about"     class="nav-link" data-nav-en="About"          data-nav-es="Acerca de"    data-nav-nah="Tlaixmati"      data-nav-hi="परिचय"       data-nav-fr="À propos">About</a>
+    <a href="#timeline"  class="nav-link" data-nav-en="Timeline"       data-nav-es="Línea Tiempo" data-nav-nah="Xiuhpohualli"    data-nav-hi="समयरेखा"     data-nav-fr="Chronologie">Timeline</a>
     <a href="#advocacy"  class="nav-link" data-nav-en="Advocacy"       data-nav-es="Defensa"      data-nav-nah="Mopalehuiliz"   data-nav-hi="वकालत"       data-nav-fr="Plaidoyer">Advocacy</a>
-    <a href="#tackling"  class="nav-link" data-nav-en="Tackling"       data-nav-es="Soluciones"   data-nav-nah="Tlapalehui"     data-nav-hi="समाधान"      data-nav-fr="Solutions">Tackling</a>
-    <a href="#voice"     class="nav-link" data-nav-en="Our Voice"      data-nav-es="Nuestra Voz"  data-nav-nah="Totlahtol"      data-nav-hi="हमारी आवाज़"  data-nav-fr="Notre Voix">Our Voice</a>
+    <a href="#modern-issues" class="nav-link" data-nav-en="Issues"     data-nav-es="Problemas"    data-nav-nah="Tlahcayotl"     data-nav-hi="मुद्दे"       data-nav-fr="Enjeux">Issues</a>
+    <a href="#take-action" class="nav-link" data-nav-en="Take Action"  data-nav-es="Acción"       data-nav-nah="Chihuahua"      data-nav-hi="कार्रवाई"     data-nav-fr="Agir">Take Action</a>
     <a href="#quiz"      class="nav-link" data-nav-en="Knowledge Quest" data-nav-es="Misión Saber" data-nav-nah="Tlamatiliztli" data-nav-hi="ज्ञान यात्रा" data-nav-fr="Quête du Savoir">Knowledge Quest</a>
+    <a href="#assistant" class="nav-link" data-nav-en="Ask AI"         data-nav-es="Preguntar IA" data-nav-nah="Quixta AI"       data-nav-hi="AI से पूछें"   data-nav-fr="Poser à l'IA">Ask AI</a>
     <a href="#share"     class="nav-link" data-nav-en="Share"          data-nav-es="Compartir"    data-nav-nah="Tlahtoa"        data-nav-hi="साझा करें"    data-nav-fr="Partager">Share</a>
-    <a href="#learn-more" class="nav-link" data-nav-en="Learn More"    data-nav-es="Más Info"     data-nav-nah="Achtopa"        data-nav-hi="अधिक जानें"   data-nav-fr="En savoir plus">Learn More</a>
-    <a href="#sources"   class="nav-link" data-nav-en="Works Cited"    data-nav-es="Fuentes"      data-nav-nah="Amoxpoalli"     data-nav-hi="संदर्भ"       data-nav-fr="Bibliographie">Works Cited</a>
   </div>
 </nav>
 
@@ -806,7 +1108,7 @@ span[data-lang].lang-visible,
 
     <div class="poem-wrap reveal">
       <h3 class="poem-hd">Not Your Stories</h3>
-      <p class="poem-meta">By Srinaga Prahalad Pillutla &nbsp;·&nbsp; #USvsHate &nbsp;·&nbsp; JusticeBridge Global</p>
+      <p class="poem-meta">By Srinaga Prahalad Pillutla &nbsp;·&nbsp; #USvsHate &nbsp;·&nbsp; Global Code Catalyst</p>
       <pre class="poem-text">They see my face and think they know my story
 They believe they've read me without turning the page
 A quiet, smart, and humorless Asian boxed in a single frame
@@ -917,7 +1219,7 @@ Because nobody can divide others if we stand together</pre>
     <button class="modal-close" onclick="closeCertModal()" aria-label="Close">&times;</button>
     <div class="modal-seal">🏅</div>
     <h2 class="modal-title" id="modal-title">Digital Advocacy Certificate</h2>
-    <p class="modal-sub">Awarded by JusticeBridge Global</p>
+    <p class="modal-sub">Awarded by Global Code Catalyst</p>
     <div class="modal-recip">Knowledge Quest — Completed ✓<br><small style="font-family:var(--fb);font-size:.76rem;color:rgba(245,232,200,.55)">Indigenous Rights · 2026</small></div>
     <p class="modal-body">You've demonstrated knowledge about the critical issues facing Indigenous communities. Share this achievement and help spread awareness to 10,000+ people!</p>
     <div>
@@ -999,6 +1301,271 @@ Because nobody can divide others if we stand together</pre>
   </div>
 </section>
 
+<!-- ═══════════════════════════ INTERACTIVE TIMELINE ═══════════════════════════ -->
+<section id="timeline" class="section sb timeline-section">
+  <div class="container">
+    <p class="sect-label" style="justify-content:center;">45 Years of Impact · Milestones</p>
+    <h2 style="text-align:center;">
+      <span data-lang="en">Journey Through Time</span>
+      <span data-lang="es">Viaje a Través del Tiempo</span>
+      <span data-lang="nah">Xiuhpohualli Tequitl</span>
+      <span data-lang="hi">समय के साथ यात्रा</span>
+      <span data-lang="fr">Voyage à Travers le Temps</span>
+      <span class="h2u" style="margin-left:auto;margin-right:auto;"></span>
+    </h2>
+    <div class="timeline">
+      <div class="timeline-item reveal-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">1978</span>
+          <h3 data-lang="en">Center Founded</h3>
+          <h3 data-lang="es">Centro Fundado</h3>
+          <h3 data-lang="hi">केंद्र की स्थापना</h3>
+          <p data-lang="en">Robert T. Coulter establishes the Indian Law Resource Center to fight for Indigenous rights</p>
+          <p data-lang="es">Robert T. Coulter funda el Centro para luchar por los derechos indígenas</p>
+          <p data-lang="hi">रॉबर्ट टी. कोल्टर स्वदेशी अधिकारों के लिए संघर्ष करने के लिए केंद्र की स्थापना करते हैं</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">1995</span>
+          <h3 data-lang="en">Global Recognition</h3>
+          <h3 data-lang="es">Reconocimiento Global</h3>
+          <h3 data-lang="hi">वैश्विक मान्यता</h3>
+          <p data-lang="en">Center gains UN NGO consultative status, amplifying Indigenous voices worldwide</p>
+          <p data-lang="es">El Centro obtiene estatus consultivo de ONG ante la ONU</p>
+          <p data-lang="hi">केंद्र को यूएन में एनजीओ सलाहकार दर्जा प्राप्त होता है</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">2007</span>
+          <h3 data-lang="en">UN Declaration Victory</h3>
+          <h3 data-lang="es">Victoria de Declaración ONU</h3>
+          <h3 data-lang="hi">यूएन घोषणा विजय</h3>
+          <p data-lang="en">Center plays leading role in securing UN Declaration on Rights of Indigenous Peoples</p>
+          <p data-lang="es">Centro ayuda a asegurar la Declaración de la ONU sobre Derechos Indígenas</p>
+          <p data-lang="hi">केंद्र स्वदेशी लोगों के अधिकारों पर यूएन घोषणा सुरक्षित करने में मुख्य भूमिका निभाता है</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">2013</span>
+          <h3 data-lang="en">VAWA Reauthorization</h3>
+          <h3 data-lang="es">Reautorización VAWA</h3>
+          <h3 data-lang="hi">VAWA पुनः प्राधिकरण</h3>
+          <p data-lang="en">Landmark victory: tribes gain power to prosecute non-Native offenders. Historic day for justice.</p>
+          <p data-lang="es">Tribus logran autoridad para enjuiciar agresores no nativos</p>
+          <p data-lang="hi">जनजातियों को गैर-मूल अपराधियों पर मुकदमा चलाने की शक्ति मिलती है</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">2024</span>
+          <h3 data-lang="en">45+ Years Strong</h3>
+          <h3 data-lang="es">Más de 45 Años Fuerte</h3>
+          <h3 data-lang="hi">45+ वर्ष मजबूत</h3>
+          <p data-lang="en">29 ongoing projects across 4 global regions. Impact continues to grow across the Americas.</p>
+          <p data-lang="es">29 proyectos en 4 regiones globales. El impacto continúa creciendo.</p>
+          <p data-lang="hi">4 वैश्विक क्षेत्रों में 29 चल रही परियोजनाएं। प्रभाव बढ़ता रहता है।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MODERN CIVIL RIGHTS ISSUES ═══════════════════════════ -->
+<section id="modern-issues" class="section sc">
+  <div class="container">
+    <p class="sect-label" style="justify-content:center;">Today's Challenges · What You Should Know</p>
+    <h2 style="text-align:center;">
+      <span data-lang="en">🌍 Modern Civil Rights Issues</span>
+      <span data-lang="es">🌍 Problemas de Derechos Civiles Modernos</span>
+      <span data-lang="nah">🌍 Tlahuaca Tlahtohcayotl</span>
+      <span data-lang="hi">🌍 आधुनिक नागरिक अधिकार मुद्दे</span>
+      <span data-lang="fr">🌍 Enjeux Contemporains des Droits Civiques</span>
+      <span class="h2u" style="margin-left:auto;margin-right:auto;"></span>
+    </h2>
+    
+    <div class="issues-grid">
+      <div class="issue-card reveal">
+        <div class="issue-icon">👩</div>
+        <h3 data-lang="en">Missing & Murdered Indigenous Women</h3>
+        <h3 data-lang="es">Mujeres Indígenas Desaparecidas y Asesinadas</h3>
+        <h3 data-lang="hi">लापता और हत्या की गई स्वदेशी महिलाएं</h3>
+        <p data-lang="en">4 in 5 Native women experience violence. We demand justice, accountability, and safety.</p>
+        <p data-lang="es">4 de cada 5 mujeres nativas experimentan violencia. Exigimos justicia.</p>
+        <p data-lang="hi">5 में से 4 मूल महिलाएं हिंसा का अनुभव करती हैं। हम न्याय की मांग करते हैं।</p>
+        <a href="#share" class="issue-btn" data-lang="en">Learn & Share →</a>
+        <a href="#share" class="issue-btn" data-lang="es">Aprende y Comparte →</a>
+        <a href="#share" class="issue-btn" data-lang="hi">जानें और साझा करें →</a>
+      </div>
+      
+      <div class="issue-card reveal">
+        <div class="issue-icon">🏞️</div>
+        <h3 data-lang="en">Land & Environmental Justice</h3>
+        <h3 data-lang="es">Justicia de Tierras y Ambiente</h3>
+        <h3 data-lang="hi">भूमि और पर्यावरणीय न्याय</h3>
+        <p data-lang="en">Indigenous lands face extraction, pollution, and development. We protect what sustains us.</p>
+        <p data-lang="es">Las tierras indígenas enfrentan explotación. Protegemos lo que nos sostiene.</p>
+        <p data-lang="hi">स्वदेशी भूमि दोहन का सामना कर रहे हैं। हम जो हमें बनाए रखता है उसकी रक्षा करते हैं।</p>
+        <a href="#learn-more" class="issue-btn" data-lang="en">Get Involved →</a>
+        <a href="#learn-more" class="issue-btn" data-lang="es">Participa →</a>
+        <a href="#learn-more" class="issue-btn" data-lang="hi">भाग लें →</a>
+      </div>
+      
+      <div class="issue-card reveal">
+        <div class="issue-icon">⚖️</div>
+        <h3 data-lang="en">Tribal Sovereignty & Justice</h3>
+        <h3 data-lang="es">Soberanía Tribal y Justicia</h3>
+        <h3 data-lang="hi">जनजातीय संप्रभुता और न्याय</h3>
+        <p data-lang="en">Nations fight to maintain self-determination and restore justice systems.</p>
+        <p data-lang="es">Las naciones luchan por mantener la autodeterminación y restaurar sistemas de justicia.</p>
+        <p data-lang="hi">राष्ट्र आत्मनिर्णय बनाए रखने के लिए लड़ते हैं।</p>
+        <a href="#advocacy" class="issue-btn" data-lang="en">Discover More →</a>
+        <a href="#advocacy" class="issue-btn" data-lang="es">Descubre Más →</a>
+        <a href="#advocacy" class="issue-btn" data-lang="hi">अधिक खोजें →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TAKE ACTION ═══════════════════════════ -->
+<section id="take-action" class="section sb take-action-section">
+  <div class="container">
+    <p class="sect-label" style="justify-content:center;">Empower · Educate · Advocate</p>
+    <h2 style="text-align:center;">
+      <span data-lang="en">💪 Take Action Today</span>
+      <span data-lang="es">💪 Actúa Hoy</span>
+      <span data-lang="nah">💪 Chihuahua Axcan</span>
+      <span data-lang="hi">💪 आज कार्रवाई करें</span>
+      <span data-lang="fr">💪 Agissez Aujourd'hui</span>
+      <span class="h2u" style="margin-left:auto;margin-right:auto;"></span>
+    </h2>
+
+    <div class="action-cards">
+      <div class="action-item reveal-left">
+        <div class="action-icon">📚</div>
+        <h3 data-lang="en">Educational Resources</h3>
+        <h3 data-lang="es">Recursos Educativos</h3>
+        <h3 data-lang="hi">शैक्षिक संसाधन</h3>
+        <p data-lang="en">Access free materials to educate yourself and others about Indigenous rights.</p>
+        <p data-lang="es">Accede a materiales gratuitos para educarte sobre derechos indígenas.</p>
+        <p data-lang="hi">स्वदेशी अधिकारों के बारे में शिक्षित होने के लिए मुफ्त सामग्री तक पहुँचें।</p>
+        <a href="https://indianlaw.org/resources" class="action-btn" target="_blank" rel="noopener">
+          <span data-lang="en">Explore Resources</span>
+          <span data-lang="es">Explora Recursos</span>
+          <span data-lang="hi">संसाधन खोजें</span>
+        </a>
+      </div>
+
+      <div class="action-item reveal">
+        <div class="action-icon">🤝</div>
+        <h3 data-lang="en">Volunteer Organizations</h3>
+        <h3 data-lang="es">Organizaciones de Voluntariado</h3>
+        <h3 data-lang="hi">स्वयंसेवक संगठन</h3>
+        <p data-lang="en">Find ways to volunteer and contribute to Indigenous justice movements in your community.</p>
+        <p data-lang="es">Encuentra formas de ser voluntario y contribuir a la justicia indígena.</p>
+        <p data-lang="hi">स्वदेशी न्याय आंदोलनों में स्वेच्छा से योगदान देने के तरीके खोजें।</p>
+        <a href="https://indianlaw.org/get-involved" class="action-btn" target="_blank" rel="noopener">
+          <span data-lang="en">Get Involved</span>
+          <span data-lang="es">Participa</span>
+          <span data-lang="hi">भाग लें</span>
+        </a>
+      </div>
+
+      <div class="action-item reveal-right">
+        <div class="action-icon">💝</div>
+        <h3 data-lang="en">Support Our Work</h3>
+        <h3 data-lang="es">Apoya Nuestro Trabajo</h3>
+        <h3 data-lang="hi">हमारे काम का समर्थन करें</h3>
+        <p data-lang="en">Donate to fund critical legal cases and advocacy that protect Indigenous communities.</p>
+        <p data-lang="es">Dona para financiar casos legales que protejan a comunidades indígenas.</p>
+        <p data-lang="hi">स्वदेशी समुदायों की रक्षा करने वाले महत्वपूर्ण कानूनी मामलों को निधि देने के लिए दान करें।</p>
+        <a href="https://indianlaw.org/donate" class="action-btn action-btn-primary" target="_blank" rel="noopener">
+          <span data-lang="en">💰 Donate Now</span>
+          <span data-lang="es">💰 Dona Ahora</span>
+          <span data-lang="hi">💰 अभी दान करें</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="action-highlight" data-lang="en">
+      <strong>Every action matters.</strong> Whether you share this platform, educate your peers, volunteer, or donate — you're part of the movement for Indigenous justice and sovereignty.
+    </div>
+    <div class="action-highlight" data-lang="es">
+      <strong>Cada acción cuenta.</strong> Compartir, educar, voluntariado o donativos — todos somos parte del movimiento.
+    </div>
+    <div class="action-highlight" data-lang="hi">
+      <strong>हर कार्रवाई मायने रखती है।</strong> साझा करें, शिक्षित करें, स्वेच्छा से काम करें, या दान करें।
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ AI Q&A ASSISTANT ═══════════════════════════ -->
+<section id="assistant" class="section sc assistant-section">
+  <div class="container">
+    <p class="sect-label" style="justify-content:center;">Smart Learning · Personalized Guidance</p>
+    <h2 style="text-align:center;">
+      <span data-lang="en">🤖 Ask Our Assistant</span>
+      <span data-lang="es">🤖 Pregunta a Nuestro Asistente</span>
+      <span data-lang="nah">🤖 Quixta in Totecuio</span>
+      <span data-lang="hi">🤖 हमारे सहायक से पूछें</span>
+      <span data-lang="fr">🤖 Demandez à Notre Assistant</span>
+      <span class="h2u" style="margin-left:auto;margin-right:auto;"></span>
+    </h2>
+
+    <div class="assistant-wrapper">
+      <div class="assistant-box">
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input-group">
+          <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="Ask about Indigenous rights, MMIW, tribal sovereignty..." 
+            class="chat-input"
+            aria-label="Ask the assistant"
+          />
+          <button onclick="sendChatMessage()" class="chat-send-btn" aria-label="Send message">
+            <span class="send-icon">→</span>
+          </button>
+        </div>
+        <p class="assistant-disclaimer" data-lang="en">
+          <small>💡 Tip: Ask about MMIW, tribal sovereignty, land rights, or any Indigenous rights topic.</small>
+        </p>
+        <p class="assistant-disclaimer" data-lang="es">
+          <small>💡 Consejo: Pregunta sobre MMIW, soberanía tribal o derechos indígenas.</small>
+        </p>
+        <p class="assistant-disclaimer" data-lang="hi">
+          <small>💡 सुझाव: MMIW, जनजातीय संप्रभुता, या स्वदेशी अधिकारों के बारे में पूछें।</small>
+        </p>
+      </div>
+
+      <div class="suggested-questions">
+        <p data-lang="en" style="font-weight:600;margin-bottom:12px;">Try asking:</p>
+        <p data-lang="es" style="font-weight:600;margin-bottom:12px;">Intenta preguntar:</p>
+        <p data-lang="hi" style="font-weight:600;margin-bottom:12px;">पूछने का प्रयास करें:</p>
+        
+        <button class="suggestion-btn" onclick="handleSuggestion('What is MMIW and why is it important?')" data-lang="en">What is MMIW?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('¿Qué es MMIW?')" data-lang="es">¿Qué es MMIW?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('MMIW क्या है?')" data-lang="hi">MMIW क्या है?</button>
+
+        <button class="suggestion-btn" onclick="handleSuggestion('What is tribal sovereignty?')" data-lang="en">Tribal Sovereignty?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('¿Qué es soberanía tribal?')" data-lang="es">¿Soberanía Tribal?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('जनजातीय संप्रभुता क्या है?')" data-lang="hi">संप्रभुता?</button>
+
+        <button class="suggestion-btn" onclick="handleSuggestion('How can I help Indigenous communities?')" data-lang="en">How can I help?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('¿Cómo puedo ayudar?')" data-lang="es">¿Cómo ayudar?</button>
+        <button class="suggestion-btn" onclick="handleSuggestion('मैं कैसे मदद कर सकता हूँ?')" data-lang="hi">कैसे मदद करें?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════ LEARN MORE ═══════════════════════════ -->
 <section id="learn-more" class="section sc">
   <div class="container learn-more-section">
@@ -1043,7 +1610,7 @@ Because nobody can divide others if we stand together</pre>
 </section>
 
 <footer>
-  <p>Created by <strong>Srinaga Prahalad Pillutla</strong> &nbsp;|&nbsp; Trimester 3 · US History II · Period 5 &nbsp;|&nbsp; <strong>JusticeBridge Global</strong> &nbsp;|&nbsp; Indian Law Resource Center &copy; 2026</p>
+  <p>Created by <strong>Srinaga Prahalad Pillutla</strong> &nbsp;|&nbsp; <strong>Global Code Catalyst</strong> &nbsp;|&nbsp; Indian Law Resource Center &copy; 2026</p>
 </footer>
 
 <script>
@@ -1092,80 +1659,240 @@ const questions = [
   {q:"Approximately what fraction of American Indian and Alaska Native women have experienced violence in their lifetime?",opts:["1 in 5","2 in 5","3 in 5","4 in 5"],correct:3,explain:"More than 4 in 5 American Indian and Alaska Native women have experienced violence — one of the most overlooked human rights crises in the U.S."},
   {q:"The Indian Law Resource Center holds consultative status with which international body?",opts:["World Trade Organization","International Criminal Court","UN Economic and Social Council","NATO"],correct:2,explain:"The Center holds NGO consultative status with the United Nations Economic and Social Council, giving them a voice in global human rights discussions."}
 ];
-let currentQ = 0, score = 0, answered = false;
-
-function renderQuestion() {
-  const q = questions[currentQ];
-  document.getElementById('quiz-question').textContent = q.q;
-  document.getElementById('quiz-progress-text').textContent = `Question ${currentQ+1} of ${questions.length}`;
-  document.getElementById('quiz-score-text').textContent = `${score} correct`;
-  document.getElementById('quiz-progress-fill').style.width = `${(currentQ/questions.length)*100}%`;
-  const opts = document.getElementById('quiz-options');
-  opts.innerHTML = '';
-  q.opts.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-opt';
-    btn.textContent = opt;
-    btn.onclick = () => selectAnswer(i);
-    opts.appendChild(btn);
-  });
-  document.getElementById('quiz-feedback').className = 'quiz-feedback';
-  document.getElementById('quiz-feedback').textContent = '';
-  document.getElementById('quiz-next-btn').classList.remove('show');
-  answered = false;
-}
-
-function selectAnswer(idx) {
-  if (answered) return;
-  answered = true;
-  const q = questions[currentQ];
-  const opts = document.querySelectorAll('.quiz-opt');
-  opts.forEach(b => b.disabled = true);
-  const fb = document.getElementById('quiz-feedback');
-  if (idx === q.correct) {
-    score++;
-    opts[idx].classList.add('correct');
-    fb.textContent = '✓ Correct! ' + q.explain;
-    fb.className = 'quiz-feedback correct show';
-  } else {
-    opts[idx].classList.add('wrong');
-    opts[q.correct].classList.add('correct');
-    fb.textContent = '✗ Not quite. ' + q.explain;
-    fb.className = 'quiz-feedback wrong show';
-  }
-  document.getElementById('quiz-score-text').textContent = `${score} correct`;
-  const nb = document.getElementById('quiz-next-btn');
-  nb.textContent = currentQ < questions.length-1 ? 'Next Question →' : '🏅 Get My Certificate!';
-  nb.classList.add('show');
-}
-
-function nextQuestion() {
-  currentQ++;
-  if (currentQ >= questions.length) {
-    document.getElementById('quiz-progress-fill').style.width = '100%';
-    document.getElementById('quiz-progress-text').textContent = 'Complete!';
-    showCertModal();
-  } else { renderQuestion(); }
-}
-renderQuestion();
-
-/* ── MODAL ── */
-function showCertModal() { document.getElementById('cert-modal').classList.add('show'); document.body.style.overflow='hidden'; }
-function closeCertModal() { document.getElementById('cert-modal').classList.remove('show'); document.body.style.overflow=''; }
-document.getElementById('cert-modal').addEventListener('click', function(e){ if(e.target===this) closeCertModal(); });
-function shareCert(p) {
-  const t = encodeURIComponent('🏅 I completed the Indigenous Rights Knowledge Quest and earned my Digital Advocacy Certificate! indianlaw.org #IndigenousRights #MMIW #NativeWomen #JusticeBridgeGlobal');
-  window.open(p==='twitter'?`https://twitter.com/intent/tweet?text=${t}`:`https://wa.me/?text=${t}`,'_blank');
-}
 
 /* ── SOCIAL SHARE ── */
 const ST = '4 in 5 Native women experience violence in their lifetime. 96% is committed by non-Native offenders. One center has fought for 45 years to change this. Learn more: https://indianlaw.org #IndigenousRights #MMIW #NativeWomen';
 function shareToTwitter()  { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(ST)}`,'_blank'); }
 function shareToLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://indianlaw.org')}`,'_blank'); }
 function shareToWhatsApp() { window.open(`https://wa.me/?text=${encodeURIComponent(ST)}`,'_blank'); }
-document.querySelectorAll('.share-card').forEach(c => {
-  c.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') c.click(); });
+
+/* ── ENHANCED QUIZ WITH LOCAL STORAGE ── */
+class AdvancedQuiz {
+  constructor() {
+    this.currentQ = 0;
+    this.score = 0;
+    this.answered = false;
+    this.difficulty = 'medium';
+    this.startTime = Date.now();
+    this.answers = [];
+    this.loadProgress();
+  }
+
+  saveProgress() {
+    const progress = {
+      currentQ: this.currentQ,
+      score: this.score,
+      difficulty: this.difficulty,
+      answers: this.answers,
+      timestamp: Date.now()
+    };
+    localStorage.setItem('quizProgress', JSON.stringify(progress));
+  }
+
+  loadProgress() {
+    const saved = localStorage.getItem('quizProgress');
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+        this.currentQ = data.currentQ;
+        this.score = data.score;
+        this.difficulty = data.difficulty;
+        this.answers = data.answers;
+      }
+    }
+  }
+
+  renderQuestion() {
+    const q = questions[this.currentQ];
+    document.getElementById('quiz-question').textContent = q.q;
+    document.getElementById('quiz-progress-text').textContent = `Question ${this.currentQ+1} of ${questions.length}`;
+    document.getElementById('quiz-score-text').textContent = `${this.score} correct`;
+    document.getElementById('quiz-progress-fill').style.width = `${(this.currentQ/questions.length)*100}%`;
+    const opts = document.getElementById('quiz-options');
+    opts.innerHTML = '';
+    q.opts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.onclick = () => this.selectAnswer(i);
+      opts.appendChild(btn);
+    });
+    document.getElementById('quiz-feedback').className = 'quiz-feedback';
+    document.getElementById('quiz-feedback').textContent = '';
+    document.getElementById('quiz-next-btn').classList.remove('show');
+    this.answered = false;
+  }
+
+  selectAnswer(idx) {
+    if (this.answered) return;
+    this.answered = true;
+    const q = questions[this.currentQ];
+    const opts = document.querySelectorAll('.quiz-opt');
+    opts.forEach(b => b.disabled = true);
+    const fb = document.getElementById('quiz-feedback');
+    const isCorrect = idx === q.correct;
+    this.answers.push({ q: q.q, selected: idx, correct: q.correct, isCorrect });
+    
+    if (isCorrect) {
+      this.score++;
+      opts[idx].classList.add('correct');
+      fb.textContent = '✓ Correct! ' + q.explain;
+      fb.className = 'quiz-feedback correct show';
+    } else {
+      opts[idx].classList.add('wrong');
+      opts[q.correct].classList.add('correct');
+      fb.textContent = '✗ Not quite. ' + q.explain;
+      fb.className = 'quiz-feedback wrong show';
+    }
+    document.getElementById('quiz-score-text').textContent = `${this.score} correct`;
+    const nb = document.getElementById('quiz-next-btn');
+    nb.textContent = this.currentQ < questions.length-1 ? 'Next Question →' : '🏅 Get My Certificate!';
+    nb.classList.add('show');
+    this.saveProgress();
+  }
+
+  nextQuestion() {
+    this.currentQ++;
+    if (this.currentQ >= questions.length) {
+      document.getElementById('quiz-progress-fill').style.width = '100%';
+      document.getElementById('quiz-progress-text').textContent = 'Complete!';
+      this.showAchievements();
+      this.showCertModal();
+    } else {
+      this.renderQuestion();
+    }
+  }
+
+  showAchievements() {
+    const percentage = (this.score / questions.length) * 100;
+    let achievement = '';
+    if (percentage === 100) achievement = '🏆 Perfect Score!';
+    else if (percentage >= 80) achievement = '⭐ Expert';
+    else if (percentage >= 60) achievement = '👍 Proficient';
+    else achievement = '📚 Learning';
+    
+    const modal = document.getElementById('cert-modal');
+    const badge = modal.querySelector('.modal-seal');
+    badge.textContent = achievement;
+  }
+
+  showCertModal() {
+    document.getElementById('cert-modal').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+}
+
+const quiz = new AdvancedQuiz();
+quiz.renderQuestion();
+
+function nextQuestion() { quiz.nextQuestion(); }
+
+/* ── CERTIFICATE MODAL ── */
+function showCertModal() { quiz.showCertModal(); }
+function closeCertModal() { 
+  document.getElementById('cert-modal').classList.remove('show'); 
+  document.body.style.overflow=''; 
+}
+document.getElementById('cert-modal').addEventListener('click', function(e){ 
+  if(e.target===this) closeCertModal(); 
 });
+
+function shareCert(p) {
+  const t = encodeURIComponent('🏅 I completed the Indigenous Rights Knowledge Quest with a ' + Math.round((quiz.score/questions.length)*100) + '% score and earned my Digital Advocacy Certificate! Learn about Indigenous rights: indianlaw.org #IndigenousRights #MMIW #NativeWomen #JusticeBridgeGlobal');
+  window.open(p==='twitter'?`https://twitter.com/intent/tweet?text=${t}`:`https://wa.me/?text=${t}`,'_blank');
+}
+
+/* ── AI Q&A ASSISTANT ── */
+const assistantResponses = {
+  'what is mmiw': 'MMIW (Missing and Murdered Indigenous Women) is a crisis affecting Native American and Alaska Native communities. Over 4 in 5 Native women experience violence in their lifetime. The Indian Law Resource Center fights for justice and accountability for victims and survivors.',
+  'tribal sovereignty': 'Tribal sovereignty is the right of Native American tribes to self-govern and make decisions for their own nations. The Indian Law Resource Center has fought to restore tribal authority, particularly the power to prosecute non-Native offenders who commit crimes on tribal lands.',
+  'how can i help': 'You can help by: 1) Learning and sharing this information, 2) Donating to support legal cases, 3) Volunteering with organizations, 4) Advocating for Indigenous rights, 5) Supporting Indigenous-led movements in your community. Every action matters!',
+  'indigenous rights': 'Indigenous rights include sovereignty, land protection, cultural preservation, and freedom from violence. The UN Declaration on the Rights of Indigenous Peoples (2007) outlines these rights globally.',
+  'violence against native women': '4 in 5 Native women experience violence in their lifetime, and 96% of sexual violence against them is committed by non-Native offenders. For over 35 years, tribes had no power to prosecute non-tribal offenders. The 2013 VAWA reauthorization changed this.',
+  'land rights': 'Indigenous peoples have historical and legal rights to their ancestral lands. The Indian Law Resource Center fights to protect these lands from extraction, pollution, and illegal development.',
+  'indian law resource center': 'The Indian Law Resource Center (ILRC) is a nonprofit founded in 1978 by Robert T. Coulter. It provides free legal assistance to Indigenous peoples across the Americas, focusing on civil rights, sovereignty, and environmental justice.',
+  'default': 'That\'s a great question about Indigenous rights! The Indian Law Resource Center works on issues like tribal sovereignty, protecting Native women from violence, environmental justice, and land rights. Visit indianlaw.org for more specific information.'
+};
+
+function findBestMatch(query) {
+  const q = query.toLowerCase();
+  for (const key in assistantResponses) {
+    if (q.includes(key)) return assistantResponses[key];
+  }
+  return assistantResponses['default'];
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  
+  const messagesDiv = document.getElementById('chat-messages');
+  
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-message user';
+  userMsg.textContent = msg;
+  messagesDiv.appendChild(userMsg);
+  
+  input.value = '';
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  
+  setTimeout(() => {
+    const assistantMsg = document.createElement('div');
+    assistantMsg.className = 'chat-message assistant';
+    assistantMsg.innerHTML = `<span class="loading-spinner"></span> Thinking...`;
+    messagesDiv.appendChild(assistantMsg);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    
+    setTimeout(() => {
+      const response = findBestMatch(msg);
+      assistantMsg.textContent = response;
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }, 600);
+  }, 300);
+}
+
+function handleSuggestion(text) {
+  document.getElementById('chat-input').value = text;
+  sendChatMessage();
+}
+
+document.getElementById('chat-input').addEventListener('keypress', e => {
+  if (e.key === 'Enter') sendChatMessage();
+});
+
+/* ── ANIMATED COUNTERS ── */
+function animateCounter(element, target, duration = 1500) {
+  let current = 0;
+  const increment = target / (duration / 16);
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target;
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(current);
+    }
+  }, 16);
+}
+
+const observerForCounters = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target.classList.contains('stat-num')) {
+      const target = parseInt(entry.target.textContent);
+      animateCounter(entry.target, target);
+      observerForCounters.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-num').forEach(el => observerForCounters.observe(el));
+
+/* ── LOADING ANIMATION ON PAGE LOAD ── */
+window.addEventListener('load', () => {
+  document.body.classList.add('page-transition');
+});
+
 </script>
 </body>
 </html>
