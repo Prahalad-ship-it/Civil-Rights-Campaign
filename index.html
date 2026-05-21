@@ -1468,7 +1468,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">Nahui itech macuilli cihuatl oquicuic nemouhtiliztli. Ticnequi tlahtol.</p>
         <p data-lang="hi">5 में से 4 मूल महिलाएं हिंसा का अनुभव करती हैं। हम सभी के लिए न्याय, जवाबदेही और सुरक्षा की मांग करते हैं।</p>
         <p data-lang="fr">4 femmes autochtones sur 5 subissent des violences. Nous exigeons justice, responsabilité et sécurité pour toutes.</p>
-        <a href="#share" class="issue-btn">
+        <!-- FIX: scroll to #share section instead of broken link -->
+        <a href="#share" class="issue-btn" onclick="event.preventDefault();document.getElementById('share').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Learn &amp; Share →</span>
           <span data-lang="es">Aprende y Comparte →</span>
           <span data-lang="nah">Xicmati →</span>
@@ -1488,7 +1489,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">In masehual tlalli nemouhtilia. Ticpalehuia in tlen ticnequi.</p>
         <p data-lang="hi">स्वदेशी भूमि दोहन, प्रदूषण और विकास का सामना कर रही है। हम जीवन को बनाए रखने वाली चीजों की रक्षा करते हैं।</p>
         <p data-lang="fr">Les terres autochtones font face à l'exploitation et la pollution. Nous protégeons ce qui soutient la vie.</p>
-        <a href="#learn-more" class="issue-btn">
+        <!-- FIX: scroll to #learn-more section -->
+        <a href="#learn-more" class="issue-btn" onclick="event.preventDefault();document.getElementById('learn-more').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Get Involved →</span>
           <span data-lang="es">Participa →</span>
           <span data-lang="nah">Ximopalehuia →</span>
@@ -1508,7 +1510,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">In masehualyotl tlanepanohua itech tlatocayotl ihuan tlahtol.</p>
         <p data-lang="hi">राष्ट्र आत्मनिर्णय बनाए रखने और अपने न्याय प्रणालियों को बहाल करने के लिए लड़ते हैं।</p>
         <p data-lang="fr">Les nations se battent pour maintenir leur autodétermination et restaurer leurs systèmes de justice.</p>
-        <a href="#advocacy" class="issue-btn">
+        <!-- FIX: scroll to #advocacy section -->
+        <a href="#advocacy" class="issue-btn" onclick="event.preventDefault();document.getElementById('advocacy').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Discover More →</span>
           <span data-lang="es">Descubre Más →</span>
           <span data-lang="nah">Ximotlachiali →</span>
@@ -1553,7 +1556,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">Ximomachtia itech masehualme itech tlahtol.</p>
         <p data-lang="hi">स्वदेशी अधिकारों और न्याय के बारे में खुद को और दूसरों को शिक्षित करने के लिए मुफ्त सामग्री तक पहुँचें।</p>
         <p data-lang="fr">Accédez à des ressources gratuites pour vous éduquer sur les droits et la justice autochtones.</p>
-        <a href="https://indianlaw.org/resources" class="action-btn" target="_blank" rel="noopener">
+        <!-- FIX: /resources -> indianlaw.org -->
+        <a href="https://indianlaw.org" class="action-btn" target="_blank" rel="noopener">
           <span data-lang="en">Explore Resources</span>
           <span data-lang="es">Explorar Recursos</span>
           <span data-lang="nah">Ximotlachiali</span>
@@ -1573,7 +1577,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">Ximopalehuia itech masehual tequitlacame.</p>
         <p data-lang="hi">अपने पास स्वदेशी न्याय आंदोलनों में स्वेच्छा से काम करने और योगदान देने के तरीके खोजें।</p>
         <p data-lang="fr">Trouvez des moyens de faire du bénévolat et de contribuer aux mouvements de justice autochtone.</p>
-        <a href="https://indianlaw.org/get-involved" class="action-btn" target="_blank" rel="noopener">
+        <!-- FIX: /get-involved -> indianlaw.org -->
+        <a href="https://indianlaw.org" class="action-btn" target="_blank" rel="noopener">
           <span data-lang="en">Get Involved</span>
           <span data-lang="es">Participa</span>
           <span data-lang="nah">Ximopalehuia</span>
@@ -1593,7 +1598,8 @@ Because nobody can divide others if we stand together</pre>
         <p data-lang="nah">Ximotlapoa itech tlahtol masehualme.</p>
         <p data-lang="hi">महत्वपूर्ण कानूनी मामलों और वकालत को निधि देने के लिए दान करें जो स्वदेशी समुदायों की रक्षा करती है।</p>
         <p data-lang="fr">Faites un don pour financer des affaires juridiques critiques qui protègent les communautés autochtones.</p>
-        <a href="https://indianlaw.org/donate" class="action-btn action-btn-primary" target="_blank" rel="noopener">
+        <!-- FIX: /donate -> indianlaw.org -->
+        <a href="https://indianlaw.org" class="action-btn action-btn-primary" target="_blank" rel="noopener">
           <span data-lang="en">💰 Donate Now</span>
           <span data-lang="es">💰 Dona Ahora</span>
           <span data-lang="nah">💰 Ximotlapoa</span>
@@ -1748,9 +1754,10 @@ Because nobody can divide others if we stand together</pre>
       </a>
     </div>
     <div style="display:flex;justify-content:center;gap:16px;margin-top:32px;flex-wrap:wrap;">
-      <a href="https://indianlaw.org/donate" target="_blank" class="learn-more-btn red-variant reveal"><span>💰 <span data-lang="en">Donate</span><span data-lang="es">Donar</span><span data-lang="nah">Ximotlapoa</span><span data-lang="hi">दान</span><span data-lang="fr">Donner</span></span> <span class="btn-arrow">→</span></a>
-      <a href="https://indianlaw.org/get-involved" target="_blank" class="learn-more-btn reveal stagger-1"><span>🤝 <span data-lang="en">Volunteer</span><span data-lang="es">Voluntario</span><span data-lang="nah">Tequitlacatl</span><span data-lang="hi">स्वयंसेवा</span><span data-lang="fr">Bénévole</span></span> <span class="btn-arrow">→</span></a>
-      <a href="https://indianlaw.org/resources" target="_blank" class="learn-more-btn gold-variant reveal stagger-2"><span>📚 <span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="nah">Tlamachtiloyan</span><span data-lang="hi">संसाधन</span><span data-lang="fr">Ressources</span></span> <span class="btn-arrow">→</span></a>
+      <!-- FIX: all sub-page links -> indianlaw.org -->
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn red-variant reveal"><span>💰 <span data-lang="en">Donate</span><span data-lang="es">Donar</span><span data-lang="nah">Ximotlapoa</span><span data-lang="hi">दान</span><span data-lang="fr">Donner</span></span> <span class="btn-arrow">→</span></a>
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn reveal stagger-1"><span>🤝 <span data-lang="en">Volunteer</span><span data-lang="es">Voluntario</span><span data-lang="nah">Tequitlacatl</span><span data-lang="hi">स्वयंसेवा</span><span data-lang="fr">Bénévole</span></span> <span class="btn-arrow">→</span></a>
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn gold-variant reveal stagger-2"><span>📚 <span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="nah">Tlamachtiloyan</span><span data-lang="hi">संसाधन</span><span data-lang="fr">Ressources</span></span> <span class="btn-arrow">→</span></a>
     </div>
   </div>
 </section>
