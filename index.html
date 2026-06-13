@@ -15,188 +15,174 @@
 <style>
 /* ══ TOKENS ══ */
 :root {
-  --earth:   #1C0F08;
-  --sienna:  #7A3B1E;
-  --ochre:   #B8691E;
-  --gold:    #D4922B;
-  --gold-lt: #E8B860;
-  --cream:   #F5E8C8;
-  --cream-lt:#FBF5E8;
-  --bone:    #E8D8B0;
-  --red:     #C1272D;
-  --navy:    #1A2A40;
-  --muted:   #5A4530;
-  --charcoal:#0D0805;
+  --earth:   #1A1A1A;
+  --sienna:  #8B4513;
+  --ochre:   #D2691E;
+  --gold:    #DAA520;
+  --gold-lt: #EFD5A8;
+  --cream:   #F8F4E3;
+  --cream-lt:#FCF9F0;
+  --bone:    #F0E6D2;
+  --red:     #B22222;
+  --navy:    #1A1A2E;
+  --muted:   #6B5B46;
+  --charcoal:#0F0F0F;
   --fd: 'Playfair Display', Georgia, serif;
   --fb: 'DM Sans', system-ui, sans-serif;
   --ro:       8px 2px 10px 4px;
   --ro-sm:    4px 1px 6px 2px;
   --ro-lg:    14px 4px 18px 6px;
   --ro-photo: 3px 7px 2px 8px;
-  --bs:       10px 10px 0 var(--navy);
-  --bs-red:   10px 10px 0 var(--red);
-  --bs-sm:     6px  6px 0 var(--navy);
-  --t: .22s cubic-bezier(.4,0,.2,1);
-  --glow-gold: 0 0 30px rgba(212,146,43,.35), 0 0 60px rgba(212,146,43,.15);
-  --glow-red:  0 0 30px rgba(193,39,45,.35), 0 0 60px rgba(193,39,45,.15);
+  --bs:       8px 8px 0 var(--navy);
+  --bs-red:   8px 8px 0 var(--red);
+  --bs-sm:     4px  4px 0 var(--navy);
+  --t: .2s cubic-bezier(.4,0,.2,1);
+  --glow-gold: 0 0 20px rgba(218,165,32,.25), 0 0 40px rgba(218,165,32,.1);
+  --glow-red:  0 0 20px rgba(178,34,34,.25), 0 0 40px rgba(178,34,34,.1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--fb); background: var(--cream); color: var(--earth); line-height: 1.75; overflow-x: hidden; cursor: none; }
+body { font-family: var(--fb); background: var(--cream-lt); color: var(--earth); line-height: 1.8; overflow-x: hidden; }
 img  { max-width: 100%; height: auto; display: block; }
 a    { color: inherit; text-decoration: none; }
 ul   { list-style: none; }
-
-/* ══ CUSTOM CURSOR ══ */
-.cursor {
-  position: fixed; width: 12px; height: 12px; border-radius: 50%;
-  background: var(--gold); pointer-events: none; z-index: 99999;
-  transform: translate(-50%, -50%); transition: width .25s ease, height .25s ease, background .25s ease;
-  mix-blend-mode: multiply;
-}
-.cursor-ring {
-  position: fixed; width: 38px; height: 38px; border-radius: 50%;
-  border: 2px solid rgba(212,146,43,.5); pointer-events: none; z-index: 99998;
-  transform: translate(-50%, -50%); transition: width .3s ease, height .3s ease, border-color .3s ease;
-}
-.cursor.hovering { width: 20px; height: 20px; background: var(--red); }
-.cursor-ring.hovering { width: 56px; height: 56px; border-color: rgba(193,39,45,.4); }
 
 /* ══ PAGE LOADER ══ */
 .page-loader {
   position: fixed; inset: 0; z-index: 99997;
   background: var(--charcoal); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 24px;
-  transition: opacity .7s ease, visibility .7s ease;
+  align-items: center; justify-content: center; gap: 16px;
+  transition: opacity .5s ease, visibility .5s ease;
 }
 .page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-feather { font-size: 3.5rem; animation: loaderFloat 1.2s ease-in-out infinite alternate; }
-.loader-bar-wrap { width: 240px; height: 4px; background: rgba(255,255,255,.1); border-radius: 2px; overflow: hidden; }
-.loader-bar { height: 100%; background: linear-gradient(90deg, var(--sienna), var(--gold)); border-radius: 2px; animation: loaderFill 1.9s ease forwards; }
-.loader-text { font-family: var(--fd); font-style: italic; color: rgba(245,232,200,.5); font-size: .9rem; letter-spacing: .12em; }
-@keyframes loaderFloat { from { transform: translateY(0) rotate(-5deg); } to { transform: translateY(-18px) rotate(5deg); } }
+.loader-feather { font-size: 2.5rem; animation: loaderFloat 1s ease-in-out infinite alternate; opacity: 0.8; }
+.loader-bar-wrap { width: 180px; height: 3px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+.loader-bar { height: 100%; background: linear-gradient(90deg, var(--sienna), var(--gold)); border-radius: 3px; animation: loaderFill 1.5s ease forwards; }
+.loader-text { font-family: var(--fb); font-style: normal; color: var(--cream-lt); font-size: .85rem; letter-spacing: 0.5px; }
+@keyframes loaderFloat { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-8px) rotate(3deg); } }
 @keyframes loaderFill { from { width: 0%; } to { width: 100%; } }
 
 /* ══ PAPER GRAIN ══ */
 .grain {
   position: fixed; inset: -50%; width: 200%; height: 200%;
-  pointer-events: none; z-index: 9997; opacity: .038;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grn 9s steps(2) infinite;
+  pointer-events: none; z-index: 9997; opacity: .015;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grn 12s steps(2) infinite;
 }
 @keyframes grn {
-  0%,100%{transform:translate(0,0)} 12%{transform:translate(-3%,-5%)}
-  25%{transform:translate(-8%,3%)} 37%{transform:translate(5%,-7%)}
-  50%{transform:translate(-4%,10%)} 62%{transform:translate(11%,0)}
-  75%{transform:translate(0,7%)} 87%{transform:translate(-9%,2%)}
+  0%,100%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)}
+  20%{transform:translate(-5%,2%)} 30%{transform:translate(3%,-4%)}
+  40%{transform:translate(-2%,6%)} 50%{transform:translate(4%,-1%)}
+  60%{transform:translate(1%,4%)} 70%{transform:translate(-3%,-2%)}
+  80%{transform:translate(2%,1%)} 90%{transform:translate(-1%,3%)}
 }
 
 /* ══ AMBIENT ORBS ══ */
 .ambient-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0; animation: orbDrift linear infinite; transition: opacity 1s ease; }
-.orb-1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,146,43,.08) 0%, transparent 70%); top: 10%; left: 5%; animation-duration: 25s; }
-.orb-2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(193,39,45,.06) 0%, transparent 70%); top: 50%; right: 8%; animation-duration: 20s; animation-delay: -8s; }
-.orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(122,59,30,.05) 0%, transparent 70%); bottom: 15%; left: 30%; animation-duration: 30s; animation-delay: -15s; }
-@keyframes orbDrift { 0%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,-30px) scale(1.1)} 66%{transform:translate(-20px,50px) scale(.9)} 100%{transform:translate(0,0) scale(1)} }
-.orbs-active .orb { opacity: 1; }
+.orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0; animation: orbDrift linear infinite; transition: opacity 0.8s ease; }
+.orb-1 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(218,165,32,.06) 0%, transparent 70%); top: 12%; left: 6%; animation-duration: 22s; }
+.orb-2 { width: 220px; height: 220px; background: radial-gradient(circle, rgba(178,34,34,.04) 0%, transparent 70%); top: 48%; right: 10%; animation-duration: 18s; animation-delay: -6s; }
+.orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(139,69,19,.03) 0%, transparent 70%); bottom: 18%; left: 32%; animation-duration: 25s; animation-delay: -12s; }
+@keyframes orbDrift { 0%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-15px,35px) scale(.95)} 100%{transform:translate(0,0) scale(1)} }
+.orbs-active .orb { opacity: 0.4; }
 
 /* ══ REVEAL SYSTEM ══ */
-.reveal      { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.22,.68,0,1.2), transform .9s cubic-bezier(.22,.68,0,1.2); }
-.reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity .9s ease, transform .9s cubic-bezier(.22,.68,0,1.2); }
-.reveal-right{ opacity: 0; transform: translateX(50px); transition: opacity .9s ease, transform .9s cubic-bezier(.22,.68,0,1.2); }
-.reveal-scale{ opacity: 0; transform: scale(.88); transition: opacity .8s ease, transform .8s cubic-bezier(.34,1.56,.64,1); }
+.reveal      { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.25,.8,.25,1), transform .7s cubic-bezier(.25,.8,.25,1); }
+.reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity .7s ease, transform .7s cubic-bezier(.25,.8,.25,1); }
+.reveal-right{ opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.25,.8,.25,1); }
+.reveal-scale{ opacity: 0; transform: scale(.92); transition: opacity .6s ease, transform .6s cubic-bezier(.34,1.56,.64,1); }
 .reveal.visible,.reveal-left.visible,.reveal-right.visible,.reveal-scale.visible { opacity: 1; transform: none; }
-.stagger-1{transition-delay:.1s!important}.stagger-2{transition-delay:.22s!important}.stagger-3{transition-delay:.34s!important}.stagger-4{transition-delay:.46s!important}.stagger-5{transition-delay:.58s!important}
-
-/* ══ PAGE INFO ══ */
-.page-info { background: var(--charcoal); color: rgba(245,232,200,.5); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: 5px 24px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; border-bottom: 3px solid var(--red); }
-.page-info strong { color: var(--gold-lt); }
+.stagger-1{transition-delay:.08s!important}.stagger-2{transition-delay:.16s!important}.stagger-3{transition-delay:.24s!important}.stagger-4{transition-delay:.32s!important}.stagger-5{transition-delay:.4s!important}
 
 /* ══ LANGUAGE BAR ══ */
-.lang-bar { background: var(--sienna); display: flex; align-items: center; justify-content: flex-end; gap: 6px; padding: 7px 24px; font-size: .78rem; color: var(--cream); flex-wrap: wrap; }
-.lang-bar-label { opacity:.62; font-weight:300; margin-right:6px; white-space:nowrap; }
-.lang-pill { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); border: 1.5px solid rgba(245,230,200,.22); border-radius: 20px; padding: 4px 14px 4px 10px; cursor: pointer; font-family: var(--fb); font-size: .73rem; font-weight: 500; color: rgba(245,230,200,.68); transition: all .3s cubic-bezier(.34,1.56,.64,1); white-space: nowrap; user-select: none; }
-.lang-pill:hover { background: rgba(212,146,43,.2); border-color: var(--gold); color: var(--cream); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(212,146,43,.2); }
-.lang-pill.active { background: var(--gold); border-color: var(--gold); color: var(--earth); font-weight: 700; box-shadow: 0 6px 20px rgba(212,146,43,.4); }
-.pill-dot { width:8px; height:8px; border-radius:50%; background:rgba(245,230,200,.28); flex-shrink:0; }
+.lang-bar { background: var(--sienna); display: flex; align-items: center; justify-content: flex-end; gap: 4px; padding: 6px 20px; font-size: .75rem; color: var(--cream-lt); flex-wrap: wrap; }
+.lang-bar-label { opacity:.5; font-weight:400; margin-right:4px; white-space:nowrap; }
+.lang-pill { display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,.05); border: 1px solid rgba(245,230,200,.15); border-radius: 50px; padding: 3px 12px 3px 8px; cursor: pointer; font-family: var(--fb); font-size: .7rem; font-weight: 400; color: rgba(245,230,200,.55); transition: all .2s cubic-bezier(.4,0,.2,1); white-space: nowrap; user-select: none; }
+.lang-pill:hover { background: rgba(218,165,32,.15); border-color: var(--gold); color: var(--cream-lt); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(218,165,32,.15); }
+.lang-pill.active { background: var(--gold); border-color: var(--gold); color: var(--earth); font-weight: 500; box-shadow: 0 3px 10px rgba(218,165,32,.25); }
+.pill-dot { width:6px; height:6px; border-radius:50%; background:rgba(245,230,200,.2); flex-shrink:0; }
 .lang-pill.active .pill-dot { background: var(--earth); }
-.pill-flag { font-size: .88rem; }
+.pill-flag { font-size: .75rem; }
 
 /* ══ MASTHEAD ══ */
 .masthead { background: var(--charcoal); position: relative; overflow: hidden; }
-.masthead-stripe { height: 6px; background: linear-gradient(90deg, var(--sienna), var(--red), var(--gold), var(--red), var(--sienna)); background-size: 200% 100%; animation: stripeShimmer 4s linear infinite; }
+.masthead-stripe { height: 4px; background: linear-gradient(90deg, var(--sienna), var(--gold), var(--red)); background-size: 200% 100%; animation: stripeShimmer 3s linear infinite; }
 @keyframes stripeShimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
 .masthead-geo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .masthead-geo svg { width: 100%; height: 100%; position: absolute; inset: 0; }
-.geo-ring { transform-origin: center; animation: geoSpin linear infinite; fill: none; stroke: rgba(212,146,43,.04); stroke-width: 1; }
-.geo-ring:nth-child(1){animation-duration:60s} .geo-ring:nth-child(2){animation-duration:45s;animation-direction:reverse} .geo-ring:nth-child(3){animation-duration:80s}
+.geo-ring { transform-origin: center; animation: geoSpin linear infinite; fill: none; stroke: rgba(218,165,32,.03); stroke-width: 1; }
+.geo-ring:nth-child(1){animation-duration:50s} .geo-ring:nth-child(2){animation-duration:35s;animation-direction:reverse} .geo-ring:nth-child(3){animation-duration:60s}
 @keyframes geoSpin { to { transform: rotate(360deg); } }
-.masthead-inner { max-width: 1140px; margin: 0 auto; padding: 40px 24px 36px; display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; position: relative; z-index: 1; }
+.masthead-inner { max-width: 1140px; margin: 0 auto; padding: 32px 20px 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; position: relative; z-index: 1; }
 .masthead-logo-wrap { position: relative; }
-.logo-orbit { position: absolute; inset: -16px; border-radius: 50%; border: 1.5px dashed rgba(212,146,43,.2); animation: orbitSpin 12s linear infinite; }
-.logo-orbit-dot { position: absolute; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; top: 4px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 8px rgba(212,146,43,.6); }
+.logo-orbit { position: absolute; inset: -12px; border-radius: 50%; border: 1px dashed rgba(218,165,32,.15); animation: orbitSpin 10s linear infinite; }
+.logo-orbit-dot { position: absolute; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; top: 3px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 4px rgba(218,165,32,.4); }
 @keyframes orbitSpin { to { transform: rotate(360deg); } }
-.masthead-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(212,146,43,.55); object-fit: cover; box-shadow: 0 0 0 6px rgba(212,146,43,.1), 7px 7px 0 var(--red); transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease; animation: logoEntrance 1s cubic-bezier(.34,1.56,.64,1) .3s both; }
-.masthead-logo:hover { transform: scale(1.08) rotate(3deg); box-shadow: 0 0 0 8px rgba(212,146,43,.2), 10px 10px 0 var(--gold), var(--glow-gold); }
-@keyframes logoEntrance { from{opacity:0;transform:scale(.5) rotate(-20deg)} to{opacity:1;transform:none} }
+.masthead-logo { width: 72px; height: 72px; border-radius: 50%; border: 2px solid rgba(218,165,32,.35); object-fit: cover; box-shadow: 0 0 0 4px rgba(218,165,32,.08), 5px 5px 0 var(--red); transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; animation: logoEntrance 0.8s cubic-bezier(.34,1.56,.64,1) .2s both; }
+.masthead-logo:hover { transform: scale(1.05) rotate(2deg); box-shadow: 0 0 0 6px rgba(218,165,32,.15), 8px 8px 0 var(--gold), var(--glow-gold); }
+@keyframes logoEntrance { from{opacity:0;transform:scale(.4) rotate(-15deg)} to{opacity:1;transform:none} }
 .masthead-title { text-align: center; }
-.masthead-eyebrow { font-family:var(--fb); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; animation: fadeSlideDown .7s ease .5s both; }
-.masthead-h1 { font-family:var(--fd); font-size:clamp(1.8rem,4.5vw,3.2rem); color:#fff; line-height:1.1; font-weight:800; letter-spacing:-.01em; animation: fadeSlideDown .7s ease .65s both; }
-.masthead-rule { height:2px; width:55%; margin:12px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); animation: ruleExpand .8s ease .8s both; }
+.masthead-eyebrow { font-family:var(--fb); font-size:.65rem; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; animation: fadeSlideDown .5s ease .4s both; }
+.masthead-h1 { font-family:var(--fd); font-size:clamp(2rem,5vw,2.8rem); color:#fff; line-height:1.1; font-weight:800; letter-spacing:-0.5px; animation: fadeSlideDown .5s ease .5s both; }
+.masthead-rule { height:1.5px; width:50%; margin:10px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); animation: ruleExpand .6s ease .6s both; }
 @keyframes ruleExpand { from{transform:scaleX(0);opacity:0} to{transform:scaleX(1);opacity:1} }
-.masthead-tagline { font-family:var(--fd); font-style:italic; color:var(--gold-lt); font-size:clamp(.85rem,2vw,1.05rem); letter-spacing:.04em; animation: fadeSlideDown .7s ease .9s both; }
-@keyframes fadeSlideDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:none} }
-.masthead-meta { text-align:right; color:rgba(245,232,200,.4); font-size:.7rem; letter-spacing:.08em; line-height:2; text-transform:uppercase; animation: fadeSlideDown .7s ease 1.1s both; }
-.masthead-meta strong { color:var(--gold); display:block; font-size:.88rem; letter-spacing:.04em; text-transform:none; font-family:var(--fd); font-style:italic; }
-.hashtag { display:inline-block; color:rgba(212,146,43,.6); transition:color .2s,transform .2s; }
-.hashtag:hover { color:var(--gold); transform:scale(1.05); }
+.masthead-tagline { font-family:var(--fd); font-style:italic; color:var(--gold-lt); font-size:clamp(.8rem,1.8vw,1rem); letter-spacing:0.5px; animation: fadeSlideDown .5s ease .7s both; }
+@keyframes fadeSlideDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:none} }
+.masthead-meta { text-align:right; color:rgba(245,232,200,.3); font-size:.65rem; letter-spacing:0.5px; line-height:1.8; text-transform:uppercase; animation: fadeSlideDown .5s ease 0.9s both; }
+.masthead-meta strong { color:var(--gold); display:block; font-size:.75rem; letter-spacing:0.5px; text-transform:none; font-family:var(--fd); font-style:italic; }
+.hashtag { display:inline-block; color:rgba(218,165,32,.5); transition:color .15s,transform .15s; }
+.hashtag:hover { color:var(--gold); transform:scale(1.03); }
 
 /* ══ NAVBAR ══ */
-.navbar { background: var(--navy); position: sticky; top: 0; z-index: 999; box-shadow: 0 4px 0 var(--red); }
-.nav-container { max-width:1140px; margin:0 auto; display:flex; flex-wrap:wrap; }
-.nav-link { color:rgba(245,232,200,.72); padding:13px 14px; font-size:.75rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; transition:all .25s ease; position:relative; overflow:hidden; }
-.nav-link::before { content:''; position:absolute; bottom:0; left:50%; right:50%; height:3px; background:var(--gold); transition:left .28s ease,right .28s ease; }
-.nav-link:hover { color:var(--gold-lt); }
+.navbar { background: var(--navy); position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 0 rgba(0,0,0,.1); }
+.nav-container { max-width:1140px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; }
+.nav-link { color:rgba(245,232,200,.65); padding:10px 12px; font-size:.9rem; font-weight:500; letter-spacing:0.3px; text-transform:none; transition:all .2s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.nav-link::before { content:''; position:absolute; bottom:0; left:50%; right:50%; height:2px; background:var(--gold); transition:left .2s ease,right .2s ease; }
+.nav-link:hover { color:var(--cream-lt); }
 .nav-link:hover::before,.nav-link.active-nav::before { left:0; right:0; }
 .nav-link.active-nav { color:var(--gold); }
+.nav-link:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 1.5px; }
 
 /* ══ READ PROGRESS ══ */
 .read-progress { position:fixed; top:0; left:0; height:3px; z-index:10000; background:linear-gradient(90deg,var(--sienna),var(--gold),var(--red)); width:0%; transition:width .1s linear; box-shadow:0 0 8px rgba(212,146,43,.5); }
 
 /* ══ SECTIONS ══ */
-.section { padding: 80px 24px; position: relative; }
+.section { padding: 64px 20px; position: relative; }
 .sc { background: var(--cream-lt); }
 .sb { background: var(--bone); }
 .container { max-width: 1140px; margin: 0 auto; position: relative; z-index: 1; }
-.section-divider { height:3px; background:linear-gradient(90deg,transparent,var(--gold),var(--red),transparent); background-size:200% 100%; animation:dividerFlow 3s linear infinite; }
+.section-divider { height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); background-size:200% 100%; animation:dividerFlow 2s linear infinite; }
 @keyframes dividerFlow { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
-.sect-label { font-family:var(--fb); font-size:.67rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:8px; display:flex; align-items:center; gap:10px; }
-.sect-label::after { content:''; flex:1; height:1px; background:var(--red); opacity:.28; max-width:72px; }
-h2 { font-family:var(--fd); font-size:clamp(1.9rem,4vw,2.85rem); color:var(--earth); margin-bottom:8px; line-height:1.15; font-weight:800; }
-.h2u { display:block; height:5px; width:52px; background:var(--red); border-radius:1px 3px 1px 3px; margin-top:12px; margin-bottom:32px; transition:width .6s cubic-bezier(.34,1.56,.64,1); }
-.h2u.expanded { width:120px; }
-h3 { font-family:var(--fd); font-size:1.22rem; color:var(--sienna); margin:28px 0 12px; }
-p  { margin-bottom:18px; color:var(--muted); font-size:.98rem; line-height:1.8; }
-.section-list li { padding:10px 0 10px 28px; position:relative; color:var(--muted); border-bottom:1px solid rgba(122,59,30,.1); font-size:.97rem; transition:all .3s ease; }
-.section-list li::before { content:'◆'; position:absolute; left:0; color:var(--red); font-size:.58rem; top:14px; transition:transform .3s ease; }
-.section-list li:hover { color:var(--sienna); padding-left:36px; }
-.section-list li:hover::before { transform:scale(1.4) rotate(45deg); }
+.sect-label { font-family:var(--fb); font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; color:var(--sienna); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.sect-label::after { content:''; flex:1; height:1px; background:var(--sienna); opacity:.2; max-width:60px; }
+h2 { font-family:var(--fd); font-size:clamp(2rem,4.5vw,3rem); color:var(--earth); margin-bottom:12px; line-height:1.2; font-weight:800; letter-spacing:-0.5px; }
+.h2u { display:block; height:4px; width:60px; background:var(--red); border-radius:2px; margin-top:16px; margin-bottom:24px; transition:width .5s cubic-bezier(.34,1.56,.64,1); }
+.h2u.expanded { width:140px; }
+h3 { font-family:var(--fd); font-size:1.25rem; color:var(--sienna); margin:24px 0 10px; font-weight:600; }
+p  { margin-bottom:20px; color:var(--muted); font-size:1rem; line-height:1.7; }
+.section-list li { padding:8px 0 8px 20px; position:relative; color:var(--muted); border-bottom:1px solid rgba(184,105,32,.08); font-size:1rem; transition:all .2s ease; }
+.section-list li::before { content:'◆'; position:absolute; left:0; color:var(--sienna); font-size:.5rem; top:10px; transition:transform .2s ease; }
+.section-list li:hover { color:var(--earth); padding-left:24px; }
+.section-list li:hover::before { transform:scale(1.2); }
 
 /* ══ LEARN MORE BTN ══ */
-.learn-more-btn { display:inline-flex; align-items:center; gap:10px; background:transparent; border:2px solid var(--sienna); color:var(--sienna); border-radius:30px; padding:11px 28px; font-family:var(--fb); font-size:.88rem; font-weight:600; letter-spacing:.06em; cursor:pointer; transition:all .35s cubic-bezier(.34,1.56,.64,1); position:relative; overflow:hidden; text-transform:uppercase; }
-.learn-more-btn::before { content:''; position:absolute; inset:0; background:var(--sienna); transform:translateX(-105%); transition:transform .35s cubic-bezier(.34,1.56,.64,1); border-radius:inherit; }
+.learn-more-btn { display:inline-flex; align-items:center; gap:8px; background:transparent; border:2px solid var(--sienna); color:var(--sienna); border-radius:50px; padding:10px 24px; font-family:var(--fb); font-size:.9rem; font-weight:500; letter-spacing:0.5px; cursor:pointer; transition:all .3s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; text-transform:none; }
+.learn-more-btn::before { content:''; position:absolute; inset:0; background:var(--sienna); transform:translateX(-100%); transition:transform .3s cubic-bezier(.4,0,.2,1); border-radius:inherit; }
 .learn-more-btn span,.learn-more-btn .btn-arrow { position:relative; z-index:1; }
-.learn-more-btn:hover { color:var(--cream); box-shadow:0 8px 24px rgba(122,59,30,.3); transform:translateY(-3px); }
+.learn-more-btn:hover { color:var(--cream-lt); box-shadow:0 4px 12px rgba(139,69,19,.2); transform:translateY(-2px); }
 .learn-more-btn:hover::before { transform:translateX(0); }
-.btn-arrow { transition:transform .3s ease; }
-.learn-more-btn:hover .btn-arrow { transform:translateX(6px); }
+.btn-arrow { transition:transform .2s ease; font-size:0.9em; }
+.learn-more-btn:hover .btn-arrow { transform:translateX(4px); }
 .learn-more-btn.gold-variant { border-color:var(--gold); color:var(--gold); }
 .learn-more-btn.gold-variant::before { background:var(--gold); }
 .learn-more-btn.gold-variant:hover { color:var(--earth); }
 .learn-more-btn.red-variant { border-color:var(--red); color:var(--red); }
 .learn-more-btn.red-variant::before { background:var(--red); }
-.learn-more-btn.red-variant:hover { color:#fff; }
+.learn-more-btn.red-variant:hover { color:var(--cream-lt); }
+.learn-more-btn:focus-visible, .action-btn:focus-visible, .issue-btn:focus-visible, .quiz-opt:focus-visible, .share-card:focus-visible, .cframe:focus-visible, .tl-content:focus-visible, .tl-dot-wrap:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 2px;
+}
 
 /* ══ EXPAND PANELS ══ */
 .expand-panel { max-height:0; overflow:hidden; transition:max-height .7s cubic-bezier(.4,0,.2,1),opacity .5s ease; opacity:0; }
@@ -214,14 +200,15 @@ p  { margin-bottom:18px; color:var(--muted); font-size:.98rem; line-height:1.8; 
 .about-text p:first-of-type::first-letter { font-family:var(--fd); font-size:5rem; line-height:.8; float:left; margin-right:10px; margin-top:8px; color:var(--sienna); font-weight:800; text-shadow:3px 3px 0 rgba(193,39,45,.2); }
 
 /* ══ STAT CARDS ══ */
-.stat-section { background:var(--navy); padding:60px 24px; position:relative; overflow:hidden; }
-.stat-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(212,146,43,.06) 0%,transparent 70%); pointer-events:none; }
-.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:1140px; margin:0 auto; }
-.stat-card { background:var(--cream); border:2px solid var(--earth); border-radius:var(--ro); padding:36px 20px 28px; text-align:center; box-shadow:var(--bs); transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease; position:relative; overflow:hidden; }
-.stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--red),var(--sienna)); }
-.stat-card:hover { transform:translate(-6px,-6px) scale(1.02); box-shadow:var(--bs-red),var(--glow-red); }
-.stat-num { font-family:var(--fd); font-size:3.8rem; font-weight:800; color:var(--sienna); display:block; line-height:1; margin-bottom:10px; }
-.stat-label { font-size:.88rem; color:var(--muted); font-weight:400; letter-spacing:.04em; }
+.stat-section { background:var(--navy); padding:48px 24px; position:relative; overflow:hidden; }
+.stat-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(218,165,32,.04) 0%,transparent 70%); pointer-events:none; }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1140px; margin:0 auto; }
+.stat-card { background:rgba(255,255,255,.08); backdrop-filter:blur(4px); border:1px solid rgba(218,165,32,.2); border-radius:16px; padding:28px 20px 24px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,.03); transition:all .25s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--sienna),var(--gold)); transform:scaleX(0); transition:transform .25s ease; }
+.stat-card:hover::before { transform:scaleX(1); }
+.stat-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.08); background:rgba(255,255,255,.12); }
+.stat-num { font-family:var(--fd); font-size:3.2rem; font-weight:800; color:var(--gold); display:block; line-height:1; margin-bottom:8px; }
+.stat-label { font-size:.95rem; color:var(--cream-lt); font-weight:500; letter-spacing:0.5px; }
 
 /* ══ COLLAGE IMAGES ══ */
 .collage-3 { display:grid; grid-template-columns:1.1fr 1fr .9fr; gap:0; padding:24px 0 40px; align-items:start; }
@@ -250,50 +237,41 @@ p  { margin-bottom:18px; color:var(--muted); font-size:.98rem; line-height:1.8; 
 .pull-quote-r { margin-left:auto; margin-right:-16px; padding-left:0; padding-right:48px; text-align:right; }
 .pull-quote-r::before { left:auto; right:0; }
 
-/* ══ POEM ══ */
-.poem-wrap { background:var(--charcoal); border-radius:var(--ro-lg); padding:56px 48px; margin:32px 0; position:relative; overflow:hidden; box-shadow:12px 12px 0 var(--navy); transition:box-shadow .35s ease,transform .35s ease; }
-.poem-wrap:hover { box-shadow:16px 16px 0 var(--navy),var(--glow-gold); transform:translateY(-4px); }
-.poem-wrap::before { content:'\201C'; position:absolute; top:-20px; left:12px; font-family:var(--fd); font-size:200px; color:rgba(212,146,43,.07); line-height:1; pointer-events:none; animation:quoteFloat 6s ease-in-out infinite alternate; }
-@keyframes quoteFloat { from{transform:translateY(0);opacity:.07} to{transform:translateY(-20px);opacity:.12} }
-.poem-hd { font-family:var(--fd); font-size:2rem; color:var(--gold-lt); font-weight:800; margin:0 0 4px; }
-.poem-meta { color:rgba(245,232,200,.48); font-size:.8rem; margin-bottom:28px; }
-.poem-text { color:rgba(245,232,200,.88); font-family:var(--fb); font-size:.95rem; line-height:1.95; white-space:pre-wrap; font-weight:300; position:relative; z-index:1; }
-
 /* ══ ISSUES GRID ══ */
 .issues-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
-.issue-card { background:rgba(255,255,255,.75); backdrop-filter:blur(16px); border:1.5px solid rgba(255,255,255,.95); padding:36px 28px; border-radius:20px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,.06); transition:all .4s cubic-bezier(.34,1.56,.64,1); position:relative; overflow:hidden; }
-.issue-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--sienna),var(--gold)); transform:scaleX(0); transition:transform .4s ease; transform-origin:left; }
+.issue-card { background:rgba(255,255,255,.8); backdrop-filter:blur(8px); border:1px solid rgba(218,165,32,.2); padding:28px 24px; border-radius:16px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,.05); transition:all .3s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.issue-card::before { content:''; position:absolute; top:0; left:0; right:0; height=3px; background:linear-gradient(90deg,var(--sienna),var(--gold)); transform:scaleX(0); transition:transform .3s ease; transform-origin:left; }
 .issue-card:hover::before { transform:scaleX(1); }
-.issue-card:hover { transform:translateY(-12px) scale(1.02); box-shadow:0 24px 56px rgba(0,0,0,.15),var(--glow-gold); background:rgba(255,255,255,.95); }
-.issue-icon { font-size:3rem; margin-bottom:16px; display:block; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
-.issue-card:hover .issue-icon { transform:scale(1.25) rotate(10deg); }
-.issue-card h3 { color:var(--earth); margin-bottom:12px; font-size:1.25rem; margin-top:0; }
-.issue-card p { color:var(--muted); font-size:.95rem; margin-bottom:20px; line-height:1.6; }
-.issue-btn { display:inline-block; padding:10px 22px; background:var(--sienna); color:#fff; border-radius:30px; text-decoration:none; transition:all .35s cubic-bezier(.34,1.56,.64,1); font-weight:600; font-size:.88rem; border:2px solid var(--sienna); position:relative; overflow:hidden; }
-.issue-btn::before { content:''; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transition:transform .3s ease; transform-origin:right; }
+.issue-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,.1); background:rgba(255,255,255,.9); }
+.issue-icon { font-size:2.5rem; margin-bottom:16px; display:block; transition:transform .3s ease; }
+.issue-card:hover .issue-icon { transform:scale(1.15); }
+.issue-card h3 { color:var(--earth); margin-bottom:12px; font-size:1.2rem; margin-top:0; font-weight:600; }
+.issue-card p { color:var(--muted); font-size:1rem; margin-bottom:16px; line-height:1.6; }
+.issue-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; background:var(--sienna); color:#fff; border-radius:50px; text-decoration:none; transition:all .25s cubic-bezier(.4,0,.2,1); font-weight:500; font-size:.9rem; border:none; position:relative; overflow:hidden; }
+.issue-btn::before { content:''; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transition:transform .25s ease; transform-origin:left; }
 .issue-btn span { position:relative; z-index:1; }
 .issue-btn:hover::before { transform:scaleX(1); }
-.issue-btn:hover { border-color:var(--gold); color:var(--earth); transform:translateX(4px); }
+.issue-btn:hover { background:var(--gold); color:var(--earth); transform:translateY(-1px); }
 
 /* ══ TAKE ACTION ══ */
-.take-action-section { background:linear-gradient(135deg,#E8D8B0 0%,#F5E8C8 100%); }
-.action-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin:40px 0; }
-.action-item { background:rgba(255,255,255,.65); backdrop-filter:blur(16px); border:1.5px solid rgba(255,255,255,.9); padding:36px 28px; border-radius:20px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,.08); transition:all .4s cubic-bezier(.34,1.56,.64,1); position:relative; overflow:hidden; }
-.action-item:hover { transform:translateY(-14px) scale(1.03); box-shadow:0 24px 56px rgba(0,0,0,.15),var(--glow-gold); background:rgba(255,255,255,.9); }
-.action-icon { font-size:2.8rem; margin-bottom:16px; display:block; transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
-.action-item:hover .action-icon { transform:scale(1.3) rotate(-10deg); }
-.action-item h3 { color:var(--earth); margin-bottom:12px; font-size:1.25rem; margin-top:0; }
-.action-item p { color:var(--muted); font-size:.95rem; margin-bottom:24px; line-height:1.6; }
-.action-btn { display:inline-block; padding:12px 28px; background:rgba(212,146,43,.12); color:var(--sienna); border:2px solid var(--sienna); border-radius:14px; text-decoration:none; font-weight:600; transition:all .35s cubic-bezier(.34,1.56,.64,1); cursor:pointer; font-family:var(--fb); position:relative; overflow:hidden; }
-.action-btn::before { content:''; position:absolute; inset:0; background:var(--sienna); transform:translateY(105%); transition:transform .35s ease; }
+.take-action-section { background:linear-gradient(135deg,#F0F8FF 0%,#E6F3FF 100%); }
+.action-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:32px 0; }
+.action-item { background:rgba(255,255,255,.9); backdrop-filter:blur(4px); border:1px solid rgba(218,165,32,.15); padding:24px 20px; border-radius:14px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,.04); transition:all .25s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.action-item:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.08); }
+.action-icon { font-size:2.2rem; margin-bottom:12px; display:block; transition:transform .2s ease; }
+.action-item:hover .action-icon { transform:scale(1.1); }
+.action-item h3 { color:var(--earth); margin-bottom:10px; font-size:1.1rem; margin-top:0; font-weight:600; }
+.action-item p { color:var(--muted); font-size:.95rem; margin-bottom:16px; line-height:1.6; }
+.action-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:var(--sienna); color:var(--cream-lt); border-radius:50px; text-decoration:none; transition:all .2s cubic-bezier(.4,0,.2,1); font-weight:500; font-size:.9rem; border:none; position:relative; overflow:hidden; }
+.action-btn::before { content:''; position:absolute; inset:0; background:var(--gold); transform:scaleX(0); transition:transform .2s ease; transform-origin:left; }
 .action-btn span { position:relative; z-index:1; }
-.action-btn:hover { color:#fff; box-shadow:0 8px 24px rgba(122,59,30,.25); transform:translateY(-3px); }
-.action-btn:hover::before { transform:translateY(0); }
-.action-btn-primary { background:var(--sienna); color:#fff; border-color:var(--sienna); font-weight:700; }
+.action-btn:hover::before { transform:scaleX(1); }
+.action-btn:hover { background:var(--gold); color:var(--earth); transform:translateY(-1px); }
+.action-btn-primary { background:var(--sienna); color:var(--cream-lt); border-color:var(--sienna); font-weight:500; }
 .action-btn-primary::before { background:var(--earth); }
-.action-btn-primary:hover { border-color:var(--earth); }
-.action-highlight { margin:40px auto 0; max-width:700px; padding:28px; background:rgba(193,39,45,.08); border-left:5px solid var(--red); border-radius:14px; color:var(--earth); font-size:1.05rem; line-height:1.8; font-style:italic; transition:transform .3s ease,box-shadow .3s ease; }
-.action-highlight:hover { transform:translateX(6px); box-shadow:-6px 0 0 var(--red); }
+.action-btn-primary:hover { background:rgba(139,69,19,.7); border-color:var(--sienna); }
+.action-highlight { margin:24px auto 0; max-width:600px; padding:20px; background:rgba(255,255,255,.7); border-left:4px solid var(--sienna); border-radius:12px; color:var(--earth); font-size:1rem; line-height:1.7; font-style:italic; transition:transform .2s ease,box-shadow .2s ease; }
+.action-highlight:hover { transform:translateX(4px); box-shadow:-4px 0 0 var(--sienna); }
 
 /* ══ QUIZ ══ */
 .quiz-section { background:linear-gradient(155deg,#0D0805 0%,#1A0D06 100%); position:relative; overflow:hidden; }
@@ -607,10 +585,29 @@ footer strong { color:var(--gold); }
 .footer-links { display:flex; justify-content:center; gap:24px; margin-bottom:12px; flex-wrap:wrap; }
 .footer-links a { color:rgba(245,232,200,.5); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
 .footer-links a:hover { color:var(--gold); }
+.footer-credit { margin-top:14px; color:rgba(245,232,200,.5); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; }
+.footer-credit strong { color:var(--gold-lt); }
 
 /* RIPPLE */
 .btn-ripple { position:absolute; border-radius:50%; background:rgba(255,255,255,.3); transform:scale(0); animation:ripple .7s linear; pointer-events:none; }
 @keyframes ripple { to{transform:scale(4);opacity:0} }
+
+/* ══ REDUCED MOTION ══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,.reveal-left,.reveal-right,.reveal-scale {
+    opacity: 1 !important; transform: none !important;
+  }
+  .tl-item, .tl-item:nth-child(odd), .tl-item:nth-child(even) {
+    opacity: 1 !important; transform: none !important;
+  }
+  .grain, .ambient-orbs, .timeline-stars, .tl-spine-light, .masthead-geo { display: none !important; }
+}
 
 /* ══ RESPONSIVE ══ */
 @media (max-width:1200px) { .action-cards{grid-template-columns:1fr 1fr} .issues-grid{grid-template-columns:1fr 1fr} }
@@ -632,13 +629,12 @@ footer strong { color:var(--gold); }
 @media (max-width:700px) {
   .collage-3,.collage-2,.share-grid,.quiz-options,.stat-grid{grid-template-columns:1fr}
   .masthead-inner{grid-template-columns:1fr;text-align:center} .masthead-logo{margin:0 auto}
-  .poem-wrap{padding:36px 20px} .modal-box{padding:36px 20px}
+  .modal-box{padding:36px 20px}
   .pull-quote,.pull-quote-r{font-size:1.5rem;margin-left:0;margin-right:0;padding-right:0;padding-left:40px;text-align:left}
   .pull-quote-r::before{left:0;right:auto}
   .lang-pill{padding:4px 10px 4px 8px;font-size:.7rem}
   .nav-link{padding:11px 9px;font-size:.7rem}
   .collage-3 .cframe:nth-child(1),.collage-3 .cframe:nth-child(2),.collage-3 .cframe:nth-child(3){transform:none;margin:0;box-shadow:var(--bs)}
-  body{cursor:auto} .cursor,.cursor-ring{display:none}
 }
 </style>
 </head>
@@ -651,26 +647,16 @@ footer strong { color:var(--gold); }
   <p class="loader-text">Indian Law Resource Center</p>
 </div>
 
-<!-- CUSTOM CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
 <div class="read-progress" id="read-progress"></div>
 <div class="ambient-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
 <div class="grain" aria-hidden="true"></div>
 <button class="scroll-top-btn" id="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
-
-<!-- PAGE INFO -->
-<div class="page-info">
-  <span>Created by <strong>Srinaga Prahalad Pillutla</strong></span>
-  <span><strong>Global Code Catalyst</strong></span>
-</div>
 
 <!-- LANGUAGE BAR -->
 <div class="lang-bar" role="navigation" aria-label="Language selector">
   <span class="lang-bar-label">🌐 Language:</span>
   <button class="lang-pill active" data-target="en" onclick="setLang('en',this)"><span class="pill-dot"></span><span class="pill-flag">🇺🇸</span> English</button>
   <button class="lang-pill" data-target="es" onclick="setLang('es',this)"><span class="pill-dot"></span><span class="pill-flag">🇪🇸</span> Español</button>
-  <button class="lang-pill" data-target="nah" onclick="setLang('nah',this)"><span class="pill-dot"></span><span class="pill-flag">🪶</span> Nāhuatl</button>
   <button class="lang-pill" data-target="hi" onclick="setLang('hi',this)"><span class="pill-dot"></span><span class="pill-flag">🇮🇳</span> हिन्दी</button>
   <button class="lang-pill" data-target="fr" onclick="setLang('fr',this)"><span class="pill-dot"></span><span class="pill-flag">🇫🇷</span> Français</button>
 </div>
@@ -694,13 +680,11 @@ footer strong { color:var(--gold); }
       <p class="masthead-eyebrow">Indian Law Resource Center · 2026</p>
       <h1 class="masthead-h1" data-lang="en">Indian Law Resource Center</h1>
       <h1 class="masthead-h1" data-lang="es">Centro de Recursos de Derecho Indígena</h1>
-      <h1 class="masthead-h1" data-lang="nah">Tlahtohcayotl Tlapalehuiliztli Tlahtolli</h1>
       <h1 class="masthead-h1" data-lang="hi">इंडियन लॉ रिसोर्स सेंटर</h1>
       <h1 class="masthead-h1" data-lang="fr">Centre de Ressources en Droit Indien</h1>
       <div class="masthead-rule"></div>
       <p class="masthead-tagline" data-lang="en">Justice · Sovereignty · Protection for 45+ Years</p>
       <p class="masthead-tagline" data-lang="es">Justicia · Soberanía · Protección por más de 45 años</p>
-      <p class="masthead-tagline" data-lang="nah">Tlamahuizoltiliztli · Tlatocayotl · Mopalehuiliz</p>
       <p class="masthead-tagline" data-lang="hi">न्याय · संप्रभुता · 45+ वर्षों की सुरक्षा</p>
       <p class="masthead-tagline" data-lang="fr">Justice · Souveraineté · Protection depuis 45+ ans</p>
     </div>
@@ -716,14 +700,14 @@ footer strong { color:var(--gold); }
 <!-- NAVBAR -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
-    <a href="#about"         class="nav-link" data-nav-en="About"           data-nav-es="Acerca de"    data-nav-nah="Tlaixmati"       data-nav-hi="परिचय"        data-nav-fr="À propos">About</a>
-    <a href="#timeline"      class="nav-link" data-nav-en="Timeline"        data-nav-es="Cronología"   data-nav-nah="Xiuhpohualli"    data-nav-hi="समयरेखा"      data-nav-fr="Chronologie">Timeline</a>
-    <a href="#advocacy"      class="nav-link" data-nav-en="Advocacy"        data-nav-es="Defensa"      data-nav-nah="Mopalehuiliz"    data-nav-hi="वकालत"        data-nav-fr="Plaidoyer">Advocacy</a>
-    <a href="#modern-issues" class="nav-link" data-nav-en="Issues"          data-nav-es="Problemas"    data-nav-nah="Tlahcayotl"      data-nav-hi="मुद्दे"        data-nav-fr="Enjeux">Issues</a>
-    <a href="#take-action"   class="nav-link" data-nav-en="Take Action"     data-nav-es="Acción"       data-nav-nah="Chihua"          data-nav-hi="कार्रवाई"      data-nav-fr="Agir">Take Action</a>
-    <a href="#quiz"          class="nav-link" data-nav-en="Knowledge Quest" data-nav-es="Misión Saber" data-nav-nah="Tlamatiliztli"   data-nav-hi="ज्ञान यात्रा"  data-nav-fr="Quête Savoir">Knowledge Quest</a>
-    <a href="#share"         class="nav-link" data-nav-en="Share"           data-nav-es="Compartir"    data-nav-nah="Tlahtoa"         data-nav-hi="साझा करें"     data-nav-fr="Partager">Share</a>
-    <a href="#sources"       class="nav-link" data-nav-en="Works Cited"     data-nav-es="Fuentes"      data-nav-nah="Tlamachtiloyan"  data-nav-hi="संदर्भ"        data-nav-fr="Bibliographie">Works Cited</a>
+    <a href="#about"         class="nav-link" data-nav-en="About"           data-nav-es="Acerca de"    data-nav-hi="परिचय"        data-nav-fr="À propos">About</a>
+    <a href="#timeline"      class="nav-link" data-nav-en="Timeline"        data-nav-es="Cronología"   data-nav-hi="समयरेखा"      data-nav-fr="Chronologie">Timeline</a>
+    <a href="#advocacy"      class="nav-link" data-nav-en="Advocacy"        data-nav-es="Defensa"      data-nav-hi="वकालत"        data-nav-fr="Plaidoyer">Advocacy</a>
+    <a href="#modern-issues" class="nav-link" data-nav-en="Issues"          data-nav-es="Problemas"    data-nav-hi="मुद्दे"        data-nav-fr="Enjeux">Issues</a>
+    <a href="#take-action"   class="nav-link" data-nav-en="Take Action"     data-nav-es="Acción"       data-nav-hi="कार्रवाई"      data-nav-fr="Agir">Take Action</a>
+    <a href="#quiz"          class="nav-link" data-nav-en="Knowledge Quest" data-nav-es="Misión Saber" data-nav-hi="ज्ञान यात्रा"  data-nav-fr="Quête Savoir">Knowledge Quest</a>
+    <a href="#share"         class="nav-link" data-nav-en="Share"           data-nav-es="Compartir"    data-nav-hi="साझा करें"     data-nav-fr="Partager">Share</a>
+    <a href="#sources"       class="nav-link" data-nav-en="Works Cited"     data-nav-es="Fuentes"      data-nav-hi="संदर्भ"        data-nav-fr="Bibliographie">Works Cited</a>
   </div>
 </nav>
 
@@ -787,29 +771,6 @@ footer strong { color:var(--gold); }
       </div>
     </div>
 
-    <!-- NÁHUATL -->
-    <div data-lang="nah">
-      <p class="sect-label">1978 Xiuhitl · Helena, Montana · Robert T. Coulter</p>
-      <h2>Tlahtohcayotl Tlapalehuiliztli <span class="h2u"></span></h2>
-      <div class="about-collage">
-        <div class="about-photo-wrap"><div class="photo-frame"><img src="images/About.jpg" alt="Tlahtohcayotl"><p class="photo-caption">Tlahtohcayotl</p></div></div>
-        <div class="about-text">
-          <p>In Tlahtohcayotl Tlapalehuiliztli Tlahtolli, momachtiani mopalehuia in masehualme ipan Americallan. Omito 1978 xihuitl ipan Robert T. Coulter quichiuh inic tlapalehuiliztli itech masehualme, in ayamo catca ce tequitlacatl quitlazohzomaz in intlahzohcatzin.</p>
-          <p>Quinpalehuia in masehualme itech: tlahtocayotl, chicahualiztli, inin tlaltzintli, ihuan in cihuatl momauhtia. Omochih ce tlahtol ipan Notlahtocayotzin Tlatocani itech masehualme.</p>
-          <p>Axcan, nauhcampa tlapialia itech 29 tequitl cecemanahuac, niman quimopalehuia 45 xiuhitl in masehualme. Hueliti itech COIAB, APIB, ihuan AIDSEEP.</p>
-          <div id="about-extra-nah" class="expand-panel">
-            <div class="expand-inner">
-              <h3>Tlanahuatil ihuan Tlamachiyotiliztli</h3>
-              <p>In tequitlacame moneltocac in tleihqui mochihua inic masehualme moneltocac, in tlahtohcayotl quitequitiá ipan Americallan. Quimopalehuia in masehualme itech tlahtol, ihuan quitlahtlazohtla in tleihqui tlahzohcayotl.</p>
-            </div>
-          </div>
-          <button class="learn-more-btn" onclick="toggleExpand('about-extra-nah',this)" style="margin-top:12px;">
-            <span>Achi Mottaz</span> <span class="btn-arrow">→</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- HINDI -->
     <div data-lang="hi">
       <p class="sect-label">स्थापना 1978 · हेलेना, मोंटाना · रॉबर्ट टी. कोल्टर, संस्थापक</p>
@@ -866,7 +827,6 @@ footer strong { color:var(--gold); }
       <span class="stat-num">45+</span>
       <div class="stat-label" data-lang="en">Years of Service</div>
       <div class="stat-label" data-lang="es">Años de Servicio</div>
-      <div class="stat-label" data-lang="nah">Xiuhpohualli Tequitl</div>
       <div class="stat-label" data-lang="hi">सेवा के वर्ष</div>
       <div class="stat-label" data-lang="fr">Années de Service</div>
     </div>
@@ -874,7 +834,6 @@ footer strong { color:var(--gold); }
       <span class="stat-num">29</span>
       <div class="stat-label" data-lang="en">Ongoing Projects</div>
       <div class="stat-label" data-lang="es">Proyectos Activos</div>
-      <div class="stat-label" data-lang="nah">Tequitl Mochihua</div>
       <div class="stat-label" data-lang="hi">चल रही परियोजनाएं</div>
       <div class="stat-label" data-lang="fr">Projets en Cours</div>
     </div>
@@ -882,7 +841,6 @@ footer strong { color:var(--gold); }
       <span class="stat-num">4</span>
       <div class="stat-label" data-lang="en">Global Regions</div>
       <div class="stat-label" data-lang="es">Regiones Globales</div>
-      <div class="stat-label" data-lang="nah">Cemanahuac Tlalli</div>
       <div class="stat-label" data-lang="hi">वैश्विक क्षेत्र</div>
       <div class="stat-label" data-lang="fr">Régions Mondiales</div>
     </div>
@@ -937,18 +895,6 @@ footer strong { color:var(--gold); }
       <div style="margin-top:24px;"><button class="learn-more-btn" onclick="toggleExpand('advocacy-extra-es',this)"><span>Más sobre VAWA</span> <span class="btn-arrow">→</span></button></div>
     </div>
 
-    <div data-lang="nah">
-      <p class="sect-label">Nemouhtiliztli · VAWA 2013 · Cihuatl Mopalehuia</p>
-      <h2>Tlapalehuiliztli Tequitl <span class="h2u"></span></h2>
-      <div class="collage-3">
-        <div class="cframe"><img src="images/SafeWomen.png" alt="Cihuatl Mopalehuia"></div>
-        <div class="cframe"><img src="images/Parlamento.png" alt="Tlahtoa"></div>
-        <div class="cframe"><img src="images/women%20and%20water%20are%20sacred.png" alt="Cihuatl ihuan Atl Tlazohtli"></div>
-      </div>
-      <p>In Tlahtohcayotl quicua ce nohhuian nemouhtiliztli ipan Americallan — in cihuatl momauhtia ipan masehualcalli. Nahui itech macuilli in masehual cihuatl oquicuic nemouhtiliztli, ihuan 96% tlein oquichtihtoque ayaque masehualme.</p>
-      <p>Ipan 2013, in tequitlacame oquichiuhque inic VAWA moneltocac — niman masehualme huelique tlahtlazohtla in ayaque masehualme tlapalehuia tlahzohtla.</p>
-    </div>
-
     <div data-lang="hi">
       <p class="sect-label">संकट · VAWA 2013 · सुरक्षित महिलाएं, मजबूत राष्ट्र</p>
       <h2>वकालत के प्रयास <span class="h2u"></span></h2>
@@ -990,7 +936,6 @@ footer strong { color:var(--gold); }
     <blockquote class="pull-quote reveal">
       <span data-lang="en">"4 in 5 Native women experience violence in their lifetime. 96% of that violence goes uncharged."</span>
       <span data-lang="es">"4 de cada 5 mujeres nativas sufren violencia en su vida. El 96% de esa violencia queda impune."</span>
-      <span data-lang="nah">"Nahui itech macuilli cihuatl oquicuic nemouhtiliztli. 96% ayaque motlahtlazohtla."</span>
       <span data-lang="hi">"5 में से 4 मूल महिलाएं अपने जीवन में हिंसा का अनुभव करती हैं। उस हिंसा का 96% अभियोजन के बिना रहता है।"</span>
       <span data-lang="fr">"4 femmes autochtones sur 5 subissent des violences au cours de leur vie. 96% de ces violences restent sans poursuites."</span>
       <span class="pq-attr">Indian Law Resource Center · 2026</span>
@@ -1052,24 +997,6 @@ footer strong { color:var(--gold); }
       </div>
     </div>
 
-    <div data-lang="nah">
-      <p class="sect-label">Cihuatl Mopalehuia · Masehualyotl · MMIW · 229 Alaska Tlacah</p>
-      <h2>Tlanepaniztli Tequitl <span class="h2u"></span></h2>
-      <div class="collage-2">
-        <div class="cframe"><img src="images/UN.png" alt="Notlahtocayotzin Tlatocani"></div>
-        <div class="cframe"><img src="images/Tribal%20police.png" alt="Masehual Tequitlacame"></div>
-      </div>
-      <p>In Cihuatl Mopalehuia tequitl quimopalehuia in cihuatl masehual ihuan Alaska masehualme inic quixtiz nemouhtiliztli tlen cihuatl ipan Americallan.</p>
-      <ul class="section-list">
-        <li>Quitlapoa tlahtol itech masehual cihuatl ihuan masehualyotl.</li>
-        <li>Quicua nemouhtiliztli itech Notlahtocayotzin Tlatocani.</li>
-        <li>Quichihua inic masehualme huelique tlahtlazohtla.</li>
-        <li>Quinmachtia masehual tequitlacame ihuan tlahtocame.</li>
-        <li>Quipalehuia 229 Alaska masehualme in ayamo mopalehuia.</li>
-        <li>Quixtia tlahtol itech MMIW.</li>
-      </ul>
-    </div>
-
     <div data-lang="hi">
       <p class="sect-label">सुरक्षित महिलाएं · मजबूत राष्ट्र · MMIW · 229 अलास्का मूल जनजातियां</p>
       <h2>समस्या का समाधान <span class="h2u"></span></h2>
@@ -1122,80 +1049,6 @@ footer strong { color:var(--gold); }
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════ OUR VOICE ═══════════════════════════ -->
-<section id="voice" class="section sb">
-  <div class="container">
-    <p class="sect-label">
-      <span data-lang="en">Poem · #USvsHate · Asian American Identity</span>
-      <span data-lang="es">Poema · Identidad Asiático-Americana</span>
-      <span data-lang="nah">Xochitlahtolli · Masehualyotl</span>
-      <span data-lang="hi">कविता · एशियाई अमेरिकी पहचान</span>
-      <span data-lang="fr">Poème · Identité Américaine Asiatique</span>
-    </p>
-    <h2 class="reveal">
-      <span data-lang="en">Our Voice</span>
-      <span data-lang="es">Nuestra Voz</span>
-      <span data-lang="nah">Totlahtol</span>
-      <span data-lang="hi">हमारी आवाज़</span>
-      <span data-lang="fr">Notre Voix</span>
-      <span class="h2u"></span>
-    </h2>
-    <div class="poem-wrap reveal">
-      <h3 class="poem-hd">Not Your Stories</h3>
-      <p class="poem-meta">By Srinaga Prahalad Pillutla &nbsp;·&nbsp; #USvsHate &nbsp;·&nbsp; Global Code Catalyst</p>
-      <pre class="poem-text">They see my face and think they know my story
-They believe they've read me without turning the page
-A quiet, smart, and humorless Asian boxed in a single frame
-A background noise in the halls where I am never seen or heard
-They joke about my name, history, and culture
-Like they would know the struggle of a person
-Or the sleepless nights knowing I would not visit my family
-Or how I eat food alone in the stinky school bathroom
-"Go back to your home, you stinky Asian," they say
-But where should I go, to your home or to your grandmother's house
-Because this is the place where I made a comfortable home with huge dreams.
-What many people realize is that my roots stretch as far as the ocean
-Yet, the voice, the passion, the dream, and the freedom were raised here
-Whether it be in the school, home, or the country, it has given me opportunities
-
-So I am not your stereotype to you or others or a Trend or a Punchline
-Not a "Model Myth Minority" to divide us and pretend we won't notice
-Asian Americans are not people who can be written off based on their faces
-
-We are not a joke to you or others
-We are not an ethnicity that you can laugh at
-We are not who you can assume based on our physical identity.
-We are an ethnicity that has countless languages that people speak
-We share countless stories in one shared space
-We carry strength in silence
-We carry the dream and achieve the dream
-We are leaders, artists, dreamers
-We stand together, louder and stronger
-And we are part of this nation's history in the past and the future
-Say no to xenophobia and stereotypes that don't represent us
-Say no to hate crimes against Asian Americans
-Stand with us in fighting hate and racism
-Because nobody can divide others if we stand together</pre>
-    </div>
-    <blockquote class="pull-quote reveal">"We carry strength in silence"<span class="pq-attr">— Not Your Stories, Srinaga Prahalad Pillutla</span></blockquote>
-    <blockquote class="pull-quote pull-quote-r reveal">"Nobody can divide others if we stand together"<span class="pq-attr">— Not Your Stories, Srinaga Prahalad Pillutla</span></blockquote>
-    <h3 style="font-size:1.5rem;margin-top:40px;" class="reveal">
-      <span data-lang="en">Background Story</span>
-      <span data-lang="es">Historia de Fondo</span>
-      <span data-lang="nah">Tlahtohcayotl</span>
-      <span data-lang="hi">पृष्ठभूमि की कहानी</span>
-      <span data-lang="fr">Histoire de Fond</span>
-    </h3>
-    <p data-lang="en" class="reveal">This poem was based on my experiences in eighth grade. When I joined public school after attending online school, I began to understand what it felt like to be judged for my identity. I wrote this poem to hopefully inspire others to speak up against hate, xenophobia, and false stereotypes.</p>
-    <p data-lang="es">Este poema se basa en mis experiencias en octavo grado. Cuando me uní a la escuela pública después de asistir a la escuela en línea, comencé a comprender lo que se sentía al ser juzgado por mi identidad. Escribí este poema con la esperanza de inspirar a otros a hablar en contra del odio, la xenofobia y los estereotipos falsos.</p>
-    <p data-lang="nah">In xochitlahtolli omochih itech notlamachiliztli ipan chicuexihuitl. Niquiztlacoa in ayaque tequitlacame quinmati in tonatiuh yotl. Oniquichih inic mopalehuiz mochi tlacatl.</p>
-    <p data-lang="hi">यह कविता आठवीं कक्षा में मेरे अनुभवों पर आधारित है। जब मैं ऑनलाइन स्कूल के बाद पब्लिक स्कूल में शामिल हुआ, तो मुझे समझ आया कि अपनी पहचान के लिए आंका जाना कैसा लगता है। मैंने यह कविता इस उम्मीद से लिखी कि यह दूसरों को घृणा, विदेशी-भय और झूठे रूढ़िवादों के खिलाफ बोलने के लिए प्रेरित करेगी।</p>
-    <p data-lang="fr">Ce poème est basé sur mes expériences en huitième année. Quand j'ai rejoint l'école publique après l'école en ligne, j'ai commencé à comprendre ce que c'était d'être jugé pour mon identité. J'ai écrit ce poème dans l'espoir d'inspirer les autres à s'élever contre la haine, la xénophobie et les faux stéréotypes.</p>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
 <!-- ═══════════════════════════ 🔥 SPECTACULAR TIMELINE 🔥 ═══════════════════════════ -->
 <section id="timeline" class="section timeline-section">
   <!-- Animated star field -->
@@ -1205,14 +1058,12 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label" style="justify-content:center; color:var(--gold-lt);">
       <span data-lang="en">45 Years of Impact · Click to Explore</span>
       <span data-lang="es">45 Años de Impacto · Haz clic para Explorar</span>
-      <span data-lang="nah">45 Xiuhitl · Tlaixmati</span>
       <span data-lang="hi">45 वर्षों का प्रभाव · अन्वेषण करें</span>
       <span data-lang="fr">45 Ans d'Impact · Cliquez pour Explorer</span>
     </p>
     <h2 class="reveal">
       <span data-lang="en">Journey Through Time</span>
       <span data-lang="es">Viaje a Través del Tiempo</span>
-      <span data-lang="nah">Xiuhpohualli Tlaixmati</span>
       <span data-lang="hi">समय के माध्यम से यात्रा</span>
       <span data-lang="fr">Voyage à Travers le Temps</span>
       <span class="h2u" style="margin:0 auto;background:var(--gold);"></span>
@@ -1221,7 +1072,6 @@ Because nobody can divide others if we stand together</pre>
     <p class="tl-hint">
       <span data-lang="en">Click any card to reveal the full story</span>
       <span data-lang="es">Haz clic en cualquier tarjeta para ver la historia completa</span>
-      <span data-lang="nah">Ximotlapoa itech tlahtohcayotl</span>
       <span data-lang="hi">पूरी कहानी देखने के लिए किसी भी कार्ड पर क्लिक करें</span>
       <span data-lang="fr">Cliquez sur une carte pour révéler l'histoire complète</span>
       <span class="tl-hint-arrow">↓</span>
@@ -1234,20 +1084,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 1978 -->
         <div class="tl-item" data-idx="0">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(0)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(0)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(0);}">
             <div class="tl-dot">🏛️</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(0)">
+          <div class="tl-content" onclick="toggleTlItem(0)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(0);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">🏛️</span> 1978</div>
             <h3 data-lang="en">Center Founded</h3>
             <h3 data-lang="es">Centro Fundado</h3>
-            <h3 data-lang="nah">Tequitlacame Omomachtic</h3>
             <h3 data-lang="hi">केंद्र की स्थापना</h3>
             <h3 data-lang="fr">Fondation du Centre</h3>
             <p data-lang="en">Robert T. Coulter establishes the Indian Law Resource Center to fight for Indigenous rights across the Americas.</p>
             <p data-lang="es">Robert T. Coulter funda el Centro para luchar por los derechos indígenas en las Américas.</p>
-            <p data-lang="nah">Robert T. Coulter quichiuh in tequitlacame inic tlapalehuiliztli masehualme.</p>
             <p data-lang="hi">रॉबर्ट टी. कोल्टर ने अमेरिका भर में स्वदेशी अधिकारों के लिए लड़ने हेतु इंडियन लॉ रिसोर्स सेंटर की स्थापना की।</p>
             <p data-lang="fr">Robert T. Coulter crée le Centre pour défendre les droits des peuples autochtones dans les Amériques.</p>
             <div class="tl-detail" id="tl-detail-0">
@@ -1267,20 +1115,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 1982 -->
         <div class="tl-item" data-idx="1">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(1)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(1)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-1" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(1);}">
             <div class="tl-dot">🌍</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(1)">
+          <div class="tl-content" onclick="toggleTlItem(1)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-1" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(1);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">🌍</span> 1982</div>
             <h3 data-lang="en">International Expansion</h3>
             <h3 data-lang="es">Expansión Internacional</h3>
-            <h3 data-lang="nah">Cemanahuac Tlachialoyan</h3>
             <h3 data-lang="hi">अंतर्राष्ट्रीय विस्तार</h3>
             <h3 data-lang="fr">Expansion Internationale</h3>
             <p data-lang="en">Center expands advocacy to Latin America, partnering with Indigenous organizations across Central and South America.</p>
             <p data-lang="es">El Centro amplía su defensa a América Latina, asociándose con organizaciones indígenas en Centroamérica y Sudamérica.</p>
-            <p data-lang="nah">In tequitlacame hualmechicauh ipan Americallan tlalpan, quimopalehuia masehualme.</p>
             <p data-lang="hi">केंद्र लैटिन अमेरिका तक वकालत का विस्तार करता है, मध्य और दक्षिण अमेरिका में स्वदेशी संगठनों के साथ साझेदारी करता है।</p>
             <p data-lang="fr">Le Centre étend son plaidoyer en Amérique latine, en s'associant avec des organisations autochtones en Amérique centrale et du Sud.</p>
             <div class="tl-detail" id="tl-detail-1">
@@ -1300,20 +1146,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 1995 -->
         <div class="tl-item" data-idx="2">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(2)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(2)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-2" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(2);}">
             <div class="tl-dot">🇺🇳</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(2)">
+          <div class="tl-content" onclick="toggleTlItem(2)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-2" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(2);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">🇺🇳</span> 1995</div>
             <h3 data-lang="en">UN Recognition</h3>
             <h3 data-lang="es">Reconocimiento de la ONU</h3>
-            <h3 data-lang="nah">Notlahtocayotzin Tlatocani Momachti</h3>
             <h3 data-lang="hi">संयुक्त राष्ट्र मान्यता</h3>
             <h3 data-lang="fr">Reconnaissance de l'ONU</h3>
             <p data-lang="en">Center gains NGO consultative status with the UN Economic and Social Council, amplifying Indigenous voices on the world stage.</p>
             <p data-lang="es">El Centro obtiene estatus consultivo de ONG ante el Consejo Económico y Social de la ONU, amplificando las voces indígenas en el escenario mundial.</p>
-            <p data-lang="nah">In tequitlacame oquichiuhque ONG itech Notlahtocayotzin Tlatocani, niman quixtia tlahtol masehualme.</p>
             <p data-lang="hi">केंद्र को संयुक्त राष्ट्र आर्थिक और सामाजिक परिषद के साथ एनजीओ परामर्श दर्जा मिलता है, जो विश्व मंच पर स्वदेशी आवाजों को बढ़ाता है।</p>
             <p data-lang="fr">Le Centre obtient le statut consultatif d'ONG auprès du Conseil économique et social de l'ONU, amplifiant les voix autochtones sur la scène mondiale.</p>
             <div class="tl-detail" id="tl-detail-2">
@@ -1333,20 +1177,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 2007 -->
         <div class="tl-item" data-idx="3">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(3)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(3)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-3" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(3);}">
             <div class="tl-dot">📜</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(3)">
+          <div class="tl-content" onclick="toggleTlItem(3)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-3" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(3);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">📜</span> 2007</div>
             <h3 data-lang="en">UN Declaration Victory</h3>
             <h3 data-lang="es">Victoria en la Declaración de la ONU</h3>
-            <h3 data-lang="nah">Tlahtol Notlahtocayotzin Tlatocani</h3>
             <h3 data-lang="hi">संयुक्त राष्ट्र घोषणा विजय</h3>
             <h3 data-lang="fr">Victoire : Déclaration de l'ONU</h3>
             <p data-lang="en">After decades of advocacy, the Center helps secure the UN Declaration on the Rights of Indigenous Peoples — a watershed moment in international law.</p>
             <p data-lang="es">Tras décadas de defensa, el Centro ayuda a asegurar la Declaración de las Naciones Unidas sobre los Derechos de los Pueblos Indígenas.</p>
-            <p data-lang="nah">Ica xiuhitl tlahtohcayotl, in tequitlacame oquichiuhque in Tlahtol Notlahtocayotzin Tlatocani masehualme itech.</p>
             <p data-lang="hi">दशकों की वकालत के बाद, केंद्र स्वदेशी लोगों के अधिकारों पर संयुक्त राष्ट्र घोषणा को सुरक्षित करने में मदद करता है।</p>
             <p data-lang="fr">Après des décennies de plaidoyer, le Centre aide à obtenir la Déclaration des Nations Unies sur les droits des peuples autochtones.</p>
             <div class="tl-detail" id="tl-detail-3">
@@ -1366,20 +1208,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 2013 -->
         <div class="tl-item" data-idx="4">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(4)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(4)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-4" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(4);}">
             <div class="tl-dot">⚖️</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(4)">
+          <div class="tl-content" onclick="toggleTlItem(4)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-4" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(4);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">⚖️</span> 2013</div>
             <h3 data-lang="en">VAWA Reauthorization</h3>
             <h3 data-lang="es">Reautorización de la VAWA</h3>
-            <h3 data-lang="nah">VAWA Moneltocac</h3>
             <h3 data-lang="hi">VAWA का पुनः प्राधिकरण</h3>
             <h3 data-lang="fr">Réautorisation de la VAWA</h3>
             <p data-lang="en">Landmark victory: tribal nations gain the power to prosecute non-Native offenders on tribal lands for the first time in history.</p>
             <p data-lang="es">Victoria histórica: las naciones tribales obtienen por primera vez el poder de procesar a agresores no nativos en tierras tribales.</p>
-            <p data-lang="nah">Tlamahuizoltic: masehualme oquichiuhque tlahtlazohtla ayaque masehualme ipan masehualcalli.</p>
             <p data-lang="hi">ऐतिहासिक जीत: जनजातीय राष्ट्रों को पहली बार जनजातीय भूमि पर गैर-मूल अपराधियों पर मुकदमा चलाने की शक्ति मिलती है।</p>
             <p data-lang="fr">Victoire historique : les nations tribales obtiennent pour la première fois le pouvoir de poursuivre les agresseurs non autochtones sur les terres tribales.</p>
             <div class="tl-detail" id="tl-detail-4">
@@ -1399,20 +1239,18 @@ Because nobody can divide others if we stand together</pre>
 
         <!-- 2024 -->
         <div class="tl-item" data-idx="5">
-          <div class="tl-dot-wrap" onclick="toggleTlItem(5)">
+          <div class="tl-dot-wrap" onclick="toggleTlItem(5)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-5" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(5);}">
             <div class="tl-dot">🌟</div>
           </div>
-          <div class="tl-content" onclick="toggleTlItem(5)">
+          <div class="tl-content" onclick="toggleTlItem(5)" role="button" tabindex="0" aria-expanded="false" aria-controls="tl-detail-5" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTlItem(5);}">
             <div class="tl-connector"></div>
             <div class="tl-year"><span class="tl-year-icon">🌟</span> 2024</div>
             <h3 data-lang="en">45+ Years Strong</h3>
             <h3 data-lang="es">Más de 45 Años de Fortaleza</h3>
-            <h3 data-lang="nah">Macuilli-Nahpohualli Xiuhitl</h3>
             <h3 data-lang="hi">45+ वर्ष मजबूत</h3>
             <h3 data-lang="fr">Plus de 45 Ans de Force</h3>
             <p data-lang="en">29 ongoing projects across 4 global regions. The Center's impact continues to grow across the Americas and the world.</p>
             <p data-lang="es">29 proyectos activos en 4 regiones globales. El impacto del Centro sigue creciendo en las Américas y el mundo.</p>
-            <p data-lang="nah">29 tequitl mochihua nauhcampa cemanahuac. In tlapalehuiliztli mochihua mochi tlacatl.</p>
             <p data-lang="hi">4 वैश्विक क्षेत्रों में 29 चल रही परियोजनाएं। केंद्र का प्रभाव अमेरिका और दुनिया भर में बढ़ता रहता है।</p>
             <p data-lang="fr">29 projets en cours dans 4 régions mondiales. L'impact du Centre continue de croître à travers les Amériques et le monde.</p>
             <div class="tl-detail" id="tl-detail-5">
@@ -1443,14 +1281,12 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label" style="justify-content:center;">
       <span data-lang="en">Today's Challenges · What You Should Know</span>
       <span data-lang="es">Desafíos Actuales · Lo que Debes Saber</span>
-      <span data-lang="nah">Axcan Tequitl · Tlamachiyotl</span>
       <span data-lang="hi">आज की चुनौतियां · जो आपको जानना चाहिए</span>
       <span data-lang="fr">Défis Actuels · Ce Que Vous Devez Savoir</span>
     </p>
     <h2 class="reveal" style="text-align:center;">
       <span data-lang="en">🌍 Modern Civil Rights Issues</span>
       <span data-lang="es">🌍 Problemas de Derechos Civiles Modernos</span>
-      <span data-lang="nah">🌍 Axcan Masehualyotl Tequitl</span>
       <span data-lang="hi">🌍 आधुनिक नागरिक अधिकार मुद्दे</span>
       <span data-lang="fr">🌍 Enjeux Contemporains des Droits Civiques</span>
       <span class="h2u" style="margin:0 auto;"></span>
@@ -1460,19 +1296,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="issue-icon">👩</div>
         <h3 data-lang="en">Missing &amp; Murdered Indigenous Women</h3>
         <h3 data-lang="es">Mujeres Indígenas Desaparecidas y Asesinadas</h3>
-        <h3 data-lang="nah">Motlatlani ihuan Mococoa Cihuatl</h3>
         <h3 data-lang="hi">लापता और हत्या की गई स्वदेशी महिलाएं</h3>
         <h3 data-lang="fr">Femmes Autochtones Disparues et Assassinées</h3>
         <p data-lang="en">4 in 5 Native women experience violence. We demand justice, accountability, and safety for all.</p>
         <p data-lang="es">4 de cada 5 mujeres nativas experimentan violencia. Exigimos justicia, responsabilidad y seguridad para todas.</p>
-        <p data-lang="nah">Nahui itech macuilli cihuatl oquicuic nemouhtiliztli. Ticnequi tlahtol.</p>
         <p data-lang="hi">5 में से 4 मूल महिलाएं हिंसा का अनुभव करती हैं। हम सभी के लिए न्याय, जवाबदेही और सुरक्षा की मांग करते हैं।</p>
         <p data-lang="fr">4 femmes autochtones sur 5 subissent des violences. Nous exigeons justice, responsabilité et sécurité pour toutes.</p>
-        <!-- FIX: scroll to #share section instead of broken link -->
         <a href="#share" class="issue-btn" onclick="event.preventDefault();document.getElementById('share').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Learn &amp; Share →</span>
           <span data-lang="es">Aprende y Comparte →</span>
-          <span data-lang="nah">Xicmati →</span>
           <span data-lang="hi">जानें और साझा करें →</span>
           <span data-lang="fr">Apprendre et Partager →</span>
         </a>
@@ -1481,19 +1313,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="issue-icon">🏞️</div>
         <h3 data-lang="en">Land &amp; Environmental Justice</h3>
         <h3 data-lang="es">Justicia de Tierras y Medio Ambiente</h3>
-        <h3 data-lang="nah">Tlalli ihuan Tlalyotl Tlahtol</h3>
         <h3 data-lang="hi">भूमि और पर्यावरणीय न्याय</h3>
         <h3 data-lang="fr">Justice Foncière et Environnementale</h3>
         <p data-lang="en">Indigenous lands face extraction, pollution, and development. We protect what sustains life.</p>
         <p data-lang="es">Las tierras indígenas enfrentan explotación y contaminación. Protegemos lo que sustenta la vida.</p>
-        <p data-lang="nah">In masehual tlalli nemouhtilia. Ticpalehuia in tlen ticnequi.</p>
         <p data-lang="hi">स्वदेशी भूमि दोहन, प्रदूषण और विकास का सामना कर रही है। हम जीवन को बनाए रखने वाली चीजों की रक्षा करते हैं।</p>
         <p data-lang="fr">Les terres autochtones font face à l'exploitation et la pollution. Nous protégeons ce qui soutient la vie.</p>
-        <!-- FIX: scroll to #learn-more section -->
         <a href="#learn-more" class="issue-btn" onclick="event.preventDefault();document.getElementById('learn-more').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Get Involved →</span>
           <span data-lang="es">Participa →</span>
-          <span data-lang="nah">Ximopalehuia →</span>
           <span data-lang="hi">भाग लें →</span>
           <span data-lang="fr">Rejoignez-nous →</span>
         </a>
@@ -1502,19 +1330,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="issue-icon">⚖️</div>
         <h3 data-lang="en">Tribal Sovereignty &amp; Justice</h3>
         <h3 data-lang="es">Soberanía Tribal y Justicia</h3>
-        <h3 data-lang="nah">Masehual Tlatocayotl</h3>
         <h3 data-lang="hi">जनजातीय संप्रभुता और न्याय</h3>
         <h3 data-lang="fr">Souveraineté Tribale et Justice</h3>
         <p data-lang="en">Nations fight to maintain self-determination and restore their own justice systems.</p>
         <p data-lang="es">Las naciones luchan por mantener la autodeterminación y restaurar sus propios sistemas de justicia.</p>
-        <p data-lang="nah">In masehualyotl tlanepanohua itech tlatocayotl ihuan tlahtol.</p>
         <p data-lang="hi">राष्ट्र आत्मनिर्णय बनाए रखने और अपने न्याय प्रणालियों को बहाल करने के लिए लड़ते हैं।</p>
         <p data-lang="fr">Les nations se battent pour maintenir leur autodétermination et restaurer leurs systèmes de justice.</p>
-        <!-- FIX: scroll to #advocacy section -->
         <a href="#advocacy" class="issue-btn" onclick="event.preventDefault();document.getElementById('advocacy').scrollIntoView({behavior:'smooth'})">
           <span data-lang="en">Discover More →</span>
           <span data-lang="es">Descubre Más →</span>
-          <span data-lang="nah">Ximotlachiali →</span>
           <span data-lang="hi">अधिक खोजें →</span>
           <span data-lang="fr">Découvrir Plus →</span>
         </a>
@@ -1531,14 +1355,12 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label" style="justify-content:center;">
       <span data-lang="en">Empower · Educate · Advocate</span>
       <span data-lang="es">Empoderar · Educar · Defender</span>
-      <span data-lang="nah">Chicahuia · Machtia · Tlapalehuia</span>
       <span data-lang="hi">सशक्त · शिक्षित · वकालत</span>
       <span data-lang="fr">Autonomiser · Éduquer · Défendre</span>
     </p>
     <h2 class="reveal" style="text-align:center;">
       <span data-lang="en">💪 Take Action Today</span>
       <span data-lang="es">💪 Actúa Hoy</span>
-      <span data-lang="nah">💪 Axcan Ximochihue</span>
       <span data-lang="hi">💪 आज कार्रवाई करें</span>
       <span data-lang="fr">💪 Agissez Aujourd'hui</span>
       <span class="h2u" style="margin:0 auto;"></span>
@@ -1548,19 +1370,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="action-icon">📚</div>
         <h3 data-lang="en">Educational Resources</h3>
         <h3 data-lang="es">Recursos Educativos</h3>
-        <h3 data-lang="nah">Tlamachtiloyan</h3>
         <h3 data-lang="hi">शैक्षिक संसाधन</h3>
         <h3 data-lang="fr">Ressources Éducatives</h3>
         <p data-lang="en">Access free materials to educate yourself and others about Indigenous rights and justice.</p>
         <p data-lang="es">Accede a materiales gratuitos para educarte sobre los derechos y la justicia indígenas.</p>
-        <p data-lang="nah">Ximomachtia itech masehualme itech tlahtol.</p>
         <p data-lang="hi">स्वदेशी अधिकारों और न्याय के बारे में खुद को और दूसरों को शिक्षित करने के लिए मुफ्त सामग्री तक पहुँचें।</p>
         <p data-lang="fr">Accédez à des ressources gratuites pour vous éduquer sur les droits et la justice autochtones.</p>
-        <!-- FIX: /resources -> indianlaw.org -->
         <a href="https://indianlaw.org" class="action-btn" target="_blank" rel="noopener">
           <span data-lang="en">Explore Resources</span>
           <span data-lang="es">Explorar Recursos</span>
-          <span data-lang="nah">Ximotlachiali</span>
           <span data-lang="hi">संसाधन खोजें</span>
           <span data-lang="fr">Explorer les Ressources</span>
         </a>
@@ -1569,19 +1387,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="action-icon">🤝</div>
         <h3 data-lang="en">Volunteer Organizations</h3>
         <h3 data-lang="es">Organizaciones de Voluntariado</h3>
-        <h3 data-lang="nah">Tequitlacame</h3>
         <h3 data-lang="hi">स्वयंसेवक संगठन</h3>
         <h3 data-lang="fr">Organisations de Bénévolat</h3>
         <p data-lang="en">Find ways to volunteer and contribute to Indigenous justice movements near you.</p>
         <p data-lang="es">Encuentra formas de ser voluntario y contribuir a los movimientos de justicia indígena.</p>
-        <p data-lang="nah">Ximopalehuia itech masehual tequitlacame.</p>
         <p data-lang="hi">अपने पास स्वदेशी न्याय आंदोलनों में स्वेच्छा से काम करने और योगदान देने के तरीके खोजें।</p>
         <p data-lang="fr">Trouvez des moyens de faire du bénévolat et de contribuer aux mouvements de justice autochtone.</p>
-        <!-- FIX: /get-involved -> indianlaw.org -->
         <a href="https://indianlaw.org" class="action-btn" target="_blank" rel="noopener">
           <span data-lang="en">Get Involved</span>
           <span data-lang="es">Participa</span>
-          <span data-lang="nah">Ximopalehuia</span>
           <span data-lang="hi">भाग लें</span>
           <span data-lang="fr">S'Impliquer</span>
         </a>
@@ -1590,19 +1404,15 @@ Because nobody can divide others if we stand together</pre>
         <div class="action-icon">💝</div>
         <h3 data-lang="en">Support Our Work</h3>
         <h3 data-lang="es">Apoya Nuestro Trabajo</h3>
-        <h3 data-lang="nah">Xipalehuia Totequitl</h3>
         <h3 data-lang="hi">हमारे काम का समर्थन करें</h3>
         <h3 data-lang="fr">Soutenez Notre Travail</h3>
         <p data-lang="en">Donate to fund critical legal cases and advocacy that protect Indigenous communities.</p>
         <p data-lang="es">Dona para financiar casos legales críticos que protejan a las comunidades indígenas.</p>
-        <p data-lang="nah">Ximotlapoa itech tlahtol masehualme.</p>
         <p data-lang="hi">महत्वपूर्ण कानूनी मामलों और वकालत को निधि देने के लिए दान करें जो स्वदेशी समुदायों की रक्षा करती है।</p>
         <p data-lang="fr">Faites un don pour financer des affaires juridiques critiques qui protègent les communautés autochtones.</p>
-        <!-- FIX: /donate -> indianlaw.org -->
         <a href="https://indianlaw.org" class="action-btn action-btn-primary" target="_blank" rel="noopener">
           <span data-lang="en">💰 Donate Now</span>
           <span data-lang="es">💰 Dona Ahora</span>
-          <span data-lang="nah">💰 Ximotlapoa</span>
           <span data-lang="hi">💰 अभी दान करें</span>
           <span data-lang="fr">💰 Faire un Don</span>
         </a>
@@ -1610,7 +1420,6 @@ Because nobody can divide others if we stand together</pre>
     </div>
     <div class="action-highlight reveal" data-lang="en"><strong>Every action matters.</strong> Whether you share this platform, educate your peers, volunteer, or donate — you're part of the movement for Indigenous justice and sovereignty.</div>
     <div class="action-highlight" data-lang="es"><strong>Cada acción cuenta.</strong> Ya sea que compartas esta plataforma, eduques a tus compañeros, seas voluntario o dones — eres parte del movimiento por la justicia y la soberanía indígena.</div>
-    <div class="action-highlight" data-lang="nah"><strong>Mochi tequitl tlen mochihua.</strong> Ximopalehuia in masehualme — tiquintequitia in tlahtol ihuan tlatocayotl.</div>
     <div class="action-highlight" data-lang="hi"><strong>हर कार्रवाई मायने रखती है।</strong> चाहे आप इस प्लेटफॉर्म को साझा करें, अपने साथियों को शिक्षित करें, स्वयंसेवा करें, या दान दें — आप स्वदेशी न्याय और संप्रभुता के आंदोलन का हिस्सा हैं।</div>
     <div class="action-highlight" data-lang="fr"><strong>Chaque action compte.</strong> Que vous partagiez cette plateforme, éduquiez vos pairs, fassiez du bénévolat ou donniez — vous faites partie du mouvement pour la justice et la souveraineté autochtones.</div>
   </div>
@@ -1624,21 +1433,18 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label">
       <span data-lang="en">Test Your Knowledge · Earn a Certificate</span>
       <span data-lang="es">Pon a Prueba tu Conocimiento · Gana un Certificado</span>
-      <span data-lang="nah">Ximotlaixmati · Tlamachiyotiliztli</span>
       <span data-lang="hi">ज्ञान परखें · प्रमाणपत्र अर्जित करें</span>
       <span data-lang="fr">Testez vos Connaissances · Obtenez un Certificat</span>
     </p>
     <h2 class="reveal">
       <span data-lang="en">🏹 Knowledge Quest</span>
       <span data-lang="es">🏹 Misión Saber</span>
-      <span data-lang="nah">🏹 Tlamatiliztli Tlaihiyo</span>
       <span data-lang="hi">🏹 ज्ञान यात्रा</span>
       <span data-lang="fr">🏹 Quête du Savoir</span>
       <span class="h2u"></span>
     </h2>
     <p data-lang="en" class="reveal" style="color:rgba(245,232,200,.7);">Test your knowledge of Indigenous rights and earn a Digital Advocacy Certificate!</p>
     <p data-lang="es" style="color:rgba(245,232,200,.7);">¡Pon a prueba tu conocimiento sobre los derechos indígenas y gana un Certificado Digital!</p>
-    <p data-lang="nah" style="color:rgba(245,232,200,.7);">Ximomachtiztli itech masehual tlahtol ihuan xiquixtia tlamachiyotiliztli!</p>
     <p data-lang="hi" style="color:rgba(245,232,200,.7);">स्वदेशी अधिकारों के बारे में अपना ज्ञान परखें और डिजिटल एडवोकेसी प्रमाणपत्र अर्जित करें!</p>
     <p data-lang="fr" style="color:rgba(245,232,200,.7);">Testez vos connaissances sur les droits autochtones et obtenez un Certificat de Défense Numérique !</p>
     <div class="quiz-progress-wrap reveal">
@@ -1681,14 +1487,12 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label">
       <span data-lang="en">Take Action · Amplify · Spread the Word</span>
       <span data-lang="es">Toma Acción · Amplifica · Difunde el Mensaje</span>
-      <span data-lang="nah">Ximochihue · Quixtia Tlahtol</span>
       <span data-lang="hi">कार्रवाई करें · बढ़ाएं · बात फैलाएं</span>
       <span data-lang="fr">Agir · Amplifier · Répandre le Message</span>
     </p>
     <h2 class="reveal">
       <span data-lang="en">Share Your Voice</span>
       <span data-lang="es">Comparte tu Voz</span>
-      <span data-lang="nah">Ximotlahtoa</span>
       <span data-lang="hi">अपनी आवाज़ साझा करें</span>
       <span data-lang="fr">Partagez Votre Voix</span>
       <span class="h2u"></span>
@@ -1696,7 +1500,6 @@ Because nobody can divide others if we stand together</pre>
     <div class="share-hook reveal">
       <p data-lang="en">"4 in 5 Native women experience violence in their lifetime. 96% of that violence is committed by non-Native offenders. Only one organization has fought for 45 years to change this. Learn more: indianlaw.org #IndigenousRights #MMIW #NativeWomen"</p>
       <p data-lang="es">"4 de cada 5 mujeres nativas sufren violencia en su vida. El 96% de esa violencia es cometida por agresores no nativos. Solo una organización ha luchado durante 45 años para cambiar esto. Más información: indianlaw.org #DerechosIndígenas #MMIW"</p>
-      <p data-lang="nah">"Nahui itech macuilli cihuatl oquicuic nemouhtiliztli. 96% ayaque masehualme quichihua. Ce tequitlacame 45 xiuhitl tlahtoa. indianlaw.org #MasehualTlahtol #MMIW"</p>
       <p data-lang="hi">"5 में से 4 मूल महिलाएं अपने जीवन में हिंसा का अनुभव करती हैं। उस हिंसा का 96% गैर-मूल अपराधियों द्वारा किया जाता है। केवल एक संगठन ने इसे बदलने के लिए 45 वर्षों तक लड़ाई लड़ी है। indianlaw.org #स्वदेशीअधिकार #MMIW"</p>
       <p data-lang="fr">"4 femmes autochtones sur 5 subissent des violences au cours de leur vie. 96% de ces violences sont commises par des agresseurs non autochtones. Une seule organisation se bat depuis 45 ans pour changer cela. indianlaw.org #DroitsAutochtones #MMIW"</p>
     </div>
@@ -1738,14 +1541,12 @@ Because nobody can divide others if we stand together</pre>
     <h2 class="reveal">
       <span data-lang="en">Learn More</span>
       <span data-lang="es">Más Información</span>
-      <span data-lang="nah">Achi Mottaz</span>
       <span data-lang="hi">अधिक जानें</span>
       <span data-lang="fr">En Savoir Plus</span>
       <span class="h2u" style="margin:0 auto;"></span>
     </h2>
     <p data-lang="en" class="reveal">Learn more about the Indian Law Resource Center by clicking the logo below!</p>
     <p data-lang="es" class="reveal">¡Aprende más sobre el Centro haciendo clic en el logotipo!</p>
-    <p data-lang="nah" class="reveal">Ximomachtia itech Indian Law Resource Center!</p>
     <p data-lang="hi" class="reveal">नीचे लोगो पर क्लिक करके सेंटर के बारे में अधिक जानें!</p>
     <p data-lang="fr" class="reveal">En savoir plus sur le Centre en cliquant sur le logo ci-dessous !</p>
     <div class="reveal" style="display:flex;justify-content:center;">
@@ -1754,10 +1555,9 @@ Because nobody can divide others if we stand together</pre>
       </a>
     </div>
     <div style="display:flex;justify-content:center;gap:16px;margin-top:32px;flex-wrap:wrap;">
-      <!-- FIX: all sub-page links -> indianlaw.org -->
-      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn red-variant reveal"><span>💰 <span data-lang="en">Donate</span><span data-lang="es">Donar</span><span data-lang="nah">Ximotlapoa</span><span data-lang="hi">दान</span><span data-lang="fr">Donner</span></span> <span class="btn-arrow">→</span></a>
-      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn reveal stagger-1"><span>🤝 <span data-lang="en">Volunteer</span><span data-lang="es">Voluntario</span><span data-lang="nah">Tequitlacatl</span><span data-lang="hi">स्वयंसेवा</span><span data-lang="fr">Bénévole</span></span> <span class="btn-arrow">→</span></a>
-      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn gold-variant reveal stagger-2"><span>📚 <span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="nah">Tlamachtiloyan</span><span data-lang="hi">संसाधन</span><span data-lang="fr">Ressources</span></span> <span class="btn-arrow">→</span></a>
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn red-variant reveal"><span>💰 <span data-lang="en">Donate</span><span data-lang="es">Donar</span><span data-lang="hi">दान</span><span data-lang="fr">Donner</span></span> <span class="btn-arrow">→</span></a>
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn reveal stagger-1"><span>🤝 <span data-lang="en">Volunteer</span><span data-lang="es">Voluntario</span><span data-lang="hi">स्वयंसेवा</span><span data-lang="fr">Bénévole</span></span> <span class="btn-arrow">→</span></a>
+      <a href="https://indianlaw.org" target="_blank" class="learn-more-btn gold-variant reveal stagger-2"><span>📚 <span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="hi">संसाधन</span><span data-lang="fr">Ressources</span></span> <span class="btn-arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -1770,14 +1570,12 @@ Because nobody can divide others if we stand together</pre>
     <p class="sect-label" style="justify-content:center;">
       <span data-lang="en">MLA Format · 2026 · Primary Sources</span>
       <span data-lang="es">Formato MLA · 2026 · Fuentes Primarias</span>
-      <span data-lang="nah">Tlahtohcayotl · 2026</span>
       <span data-lang="hi">MLA प्रारूप · 2026 · प्राथमिक स्रोत</span>
       <span data-lang="fr">Format MLA · 2026 · Sources Primaires</span>
     </p>
     <h2 class="reveal" style="text-align:center;color:var(--gold-lt);">
       <span data-lang="en">📖 Works Cited</span>
       <span data-lang="es">📖 Fuentes Citadas</span>
-      <span data-lang="nah">📖 Tlahtohcayotl Tlamachtiloyan</span>
       <span data-lang="hi">📖 संदर्भ सूची</span>
       <span data-lang="fr">📖 Bibliographie</span>
       <span class="h2u" style="background:var(--gold);margin:0 auto;"></span>
@@ -1820,6 +1618,7 @@ Because nobody can divide others if we stand together</pre>
     <a href="https://indianlaw.org" target="_blank" rel="noopener">indianlaw.org ↗</a>
   </div>
   <p>Created by <strong>Srinaga Prahalad Pillutla</strong> &nbsp;|&nbsp; <strong>Global Code Catalyst</strong> &nbsp;|&nbsp; Indian Law Resource Center &copy; 2026</p>
+  <p class="footer-credit">This is an independent, educational fan-made awareness project and is <strong>not officially affiliated</strong> with the Indian Law Resource Center.</p>
 </footer>
 
 <script>
@@ -1829,24 +1628,6 @@ window.addEventListener('load', () => {
     document.getElementById('page-loader').classList.add('hidden');
     document.querySelector('.ambient-orbs').classList.add('orbs-active');
   }, 2100);
-});
-
-/* ══ CUSTOM CURSOR ══ */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=-100,my=-100,rx=-100,ry=-100;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx+'px';cursor.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.share-card,.quiz-opt,.issue-card,.cframe,.action-item,.tl-content,.tl-dot-wrap').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.classList.add('hovering');ring.classList.add('hovering');});
-  el.addEventListener('mouseleave',()=>{cursor.classList.remove('hovering');ring.classList.remove('hovering');});
 });
 
 /* ══ READ PROGRESS ══ */
@@ -1859,7 +1640,7 @@ window.addEventListener('scroll',()=>{
 });
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
 function updateActiveNav(){
-  const sections=['about','advocacy','tackling','voice','timeline','modern-issues','take-action','quiz','share','learn-more','sources'];
+  const sections=['about','advocacy','tackling','timeline','modern-issues','take-action','quiz','share','learn-more','sources'];
   const scrollY=window.scrollY+100;
   sections.forEach(id=>{
     const el=document.getElementById(id);
@@ -1947,17 +1728,17 @@ document.addEventListener('mousemove',e=>{
   const geo=masthead.querySelector('.masthead-geo');
   if(geo)geo.style.transform=`translate(${x}px,${y}px)`;
   const logo=masthead.querySelector('.masthead-logo');
-  if(logo&&!logo.closest('.hovering'))logo.style.transform=`translate(${x*.5}px,${y*.5}px)`;
+  if(logo)logo.style.transform=`translate(${x*.5}px,${y*.5}px)`;
 });
 
 /* ══ STAR FIELD ══ */
 const starContainer=document.getElementById('tl-stars');
 if(starContainer){
-  for(let i=0;i<80;i++){
+  for(let i=0;i<50;i++){
     const star=document.createElement('div');
     star.className='timeline-star';
-    const size=Math.random()*2+1;
-    star.style.cssText=`width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()*4}s;`;
+    const size=Math.random()*1.5+0.5;
+    star.style.cssText=`width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*3}s;`;
     starContainer.appendChild(star);
   }
 }
@@ -1967,23 +1748,29 @@ let activeTlIdx=-1;
 function toggleTlItem(idx){
   const items=document.querySelectorAll('.tl-item');
   const detail=document.getElementById('tl-detail-'+idx);
+  const wrap=items[idx].querySelector('.tl-dot-wrap');
+  const content=items[idx].querySelector('.tl-content');
   if(activeTlIdx===idx){
-    // Close
     items[idx].classList.remove('active-tl');
     detail.classList.remove('open');
+    wrap.setAttribute('aria-expanded','false');
+    content.setAttribute('aria-expanded','false');
     activeTlIdx=-1;
   } else {
-    // Close previous
     if(activeTlIdx>=0){
       items[activeTlIdx].classList.remove('active-tl');
       const prevDetail=document.getElementById('tl-detail-'+activeTlIdx);
       if(prevDetail)prevDetail.classList.remove('open');
+      const prevWrap=items[activeTlIdx].querySelector('.tl-dot-wrap');
+      const prevContent=items[activeTlIdx].querySelector('.tl-content');
+      if(prevWrap)prevWrap.setAttribute('aria-expanded','false');
+      if(prevContent)prevContent.setAttribute('aria-expanded','false');
     }
-    // Open new
     items[idx].classList.add('active-tl');
     detail.classList.add('open');
+    wrap.setAttribute('aria-expanded','true');
+    content.setAttribute('aria-expanded','true');
     activeTlIdx=idx;
-    // Smooth scroll if needed
     setTimeout(()=>{
       const rect=items[idx].getBoundingClientRect();
       if(rect.bottom>window.innerHeight){
